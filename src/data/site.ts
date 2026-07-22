@@ -25,9 +25,9 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   labName: "Systems Aging Lab",
   institution: "Westlake University",
-  tagline: "Discovering design principles of homeostasis through aging and stress",
+  tagline: "Simple laws as clues to hidden principles in biology",
   description:
-    "We use mathematical modeling and quantitative experiments to understand the dynamics of aging and uncover generalizable principles of biological homeostasis.",
+    "We combine quantitative experiments, mathematical modeling, and data analysis to discover the order parameters and objectives that govern living systems beyond growth.",
   email: "yangyifan@westlake.edu.cn",
   address: "Westlake University, Hangzhou, China",
 };
