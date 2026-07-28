@@ -3,6 +3,8 @@ import { researchContent } from "@/data/research";
 import FadeInSection from "@/components/FadeInSection";
 import SurvivalCurve from "@/components/SurvivalCurve";
 
+import { ResearchCycle } from "@/components/ResearchCycle";
+
 const Research: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
@@ -62,6 +64,16 @@ const Research: React.FC = () => {
               </p>
             </div>
           </FadeInSection>
+        </div>
+      </section>
+  	
+      {/* Research approach */}
+      <section
+        className="py-20 lg:py-28"
+        style={{ backgroundColor: "var(--bg-card)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <ResearchCycle variant="full" />
         </div>
       </section>
 

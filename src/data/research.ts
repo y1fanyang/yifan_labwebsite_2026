@@ -1,8 +1,15 @@
+export type ResearchMaturity = "active" | "developing" | "exploratory";
+
 export interface ResearchArea {
   id: string;
   title: string;
   description: string;
   image?: string;
+  maturity?: ResearchMaturity;
+  system?: string;
+  centralQuestion?: string;
+  currentEvidence?: string;
+  openQuestion?: string;
 }
 
 export interface ResearchContent {
@@ -15,32 +22,58 @@ export interface ResearchContent {
 
 export const researchContent: ResearchContent = {
   heroTitle: "Research",
-  heroSubtitle: "Design principles of homeostasis through aging and stress",
+  heroSubtitle:
+    "Using simple laws to identify the hidden variables and objectives that organize living systems.",
   overview:
-    "Biological systems such as tissues and cells, despite being made from noisy and error-prone components, are strikingly robust due to intricate networks of control circuits collectively known as homeostasis. Homeostasis is fundamentally a systems-level, emergent phenomenon, difficult to understand from merely bottom-up description of individual parts.",
+    "Living systems are extraordinarily high-dimensional, yet under some conditions their behavior collapses onto simple quantitative laws. We treat these regularities not as endpoints, but as clues to effective variables, constraints, and biological objectives. We combine data analysis, minimal modeling, and targeted perturbations to test these ideas—and use departures from simple laws to discover where additional mechanisms become important.",
   areas: [
     {
-      id: "aging-dynamics",
-      title: "Aging Dynamics & Survival Curves",
+      id: "beyond-growth",
+      title: "What replaces growth rate when cells stop growing?",
       description:
-        'Our research aims to discover "design" principles of homeostasis through its unraveling in aging and stress. In the recent decade, detailed and painstaking quantitative measurements in various organisms have yielded such empirical "laws". These are specific yet generalisable, simple yet predictable mathematical equations describing the dynamics of aging. We are delineating the principles behind these quantitative "laws", and use new experiments and data to ground and challenge the boundaries of these principles.',
+        "During balanced growth, growth rate acts as a powerful organizing variable for microbial physiology. Once growth stops, this familiar coordinate disappears even though cells continue to change, adapt, accumulate damage, and die. Using starving E. coli as a controlled experimental system, we combine single-cell measurements, large-scale perturbations, and stochastic modeling to search for the physiological variables that govern survival and the onset of decline. Our aim is to determine when diverse survival trajectories reflect a common low-dimensional process, and when their departures reveal distinct mechanisms.",
       image: "/images/research/survival-curves.png",
+      maturity: "active",
+      system: "Starving E. coli",
+      centralQuestion:
+        "Which physiological state variable organizes cellular dynamics after growth stops?",
+      currentEvidence:
+        "Survival curves and mortality dynamics show reproducible quantitative structure across conditions and perturbations.",
+      openQuestion:
+        "Whether a common state coordinate explains this structure, and which molecular processes set its dynamics.",
     },
     {
-      id: "cell-physiology",
-      title: "Cell Physiology & Damage Dynamics",
+      id: "physiological-time",
+      title: "What controls the speed of physiological time?",
       description:
-        "We aim to resolve mechanistic mysteries in cell physiology and tissue homeostasis surrounding important genetic pathways discovered in aging research. Our top-down mathematical modeling and quantitative experiments can precisely define the functions of genes and genetic pathways on the systems-level, which are difficult to derive from molecular details alone.",
+        "Aging and damage dynamics can often be rescaled by a change in the speed of physiological time: different individuals, genotypes, or environments traverse similar trajectories at different rates. We ask what biological processes determine this rate and when temporal scaling should hold or fail. By connecting comparative data with experiments in tractable cellular systems, we seek mechanistic interpretations of the effective rate variable and principles that link short-term physiological dynamics to long-term survival.",
       image: "/images/research/pi-heatmap.png",
+      maturity: "developing",
+      system: "Microbes, model organisms, and mammalian aging data",
+      centralQuestion:
+        "What biological processes set the rate at which physiological state changes?",
+      currentEvidence:
+        "Temporal scaling provides a compact description of mortality and damage trajectories across several systems.",
+      openQuestion:
+        "The microscopic origin of the scaling rate and the biological regimes in which it remains a valid coordinate.",
     },
     {
-      id: "antibiotics",
-      title: "Antibiotics & Growth Trajectories",
+      id: "machine-learning-laws",
+      title:
+        "Can machine learning discover simple laws in high-dimensional biology?",
       description:
-        "We study how bacteriostatic and bactericidal antibiotics behave at subinhibitory concentrations, using dynamic growth trajectories to distinguish their modes of action. This work bridges our understanding of stress responses and homeostatic control in bacterial systems.",
+        "Modern biological measurements contain thousands of molecular and cellular features, but prediction alone does not reveal which collective variables make the system intelligible. We use dimensional reduction and interpretable machine learning as tools for scientific discovery: to identify candidate low-dimensional coordinates, test whether they obey simple dynamics, and connect them to perturbations and biological objectives. The goal is not a virtual cell that merely reproduces observations, but models that expose falsifiable organizing principles.",
       image: "/images/research/microfluidic.png",
+      maturity: "exploratory",
+      system: "Multimodal cellular and organismal data",
+      centralQuestion:
+        "Can high-dimensional data reveal compact variables and objectives with predictive and mechanistic meaning?",
+      currentEvidence:
+        "Low-dimensional structure repeatedly appears in physiological, aging, and population-scale data.",
+      openQuestion:
+        "How to distinguish biologically meaningful coordinates from statistical compression and connect them to causal perturbations.",
     },
   ],
   closingText:
-    "Biological questions that motivate us include: How can the same genome give rise to cell types that vary so much in lifespan? How can mammals of the same size differ in lifespan by an order of magnitude? Whether and how do organisms control their rates of aging?",
+    "Across these systems, our goal is not merely to predict biological outcomes, but to identify the effective variables, constraints, and objectives that make complex behavior intelligible.",
 };
