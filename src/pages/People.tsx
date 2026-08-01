@@ -105,7 +105,7 @@ const People: React.FC = () => {
                         <AvatarFallback
                           image={person.image}
                           name={person.name}
-                          size={80}
+                          size={role === "pi" ? 132 : 112}
                           rounded="lg"
                           className="transition-all duration-300 group-hover:scale-105"
                         />

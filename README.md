@@ -32,7 +32,7 @@ npm run preview
 ## 项目结构
 
 ```
-lab_website_kimibase/
+yifan_labwebsite_2026/
 ├── public/
 │   └── images/
 │       ├── team/          # 团队成员头像
@@ -42,7 +42,8 @@ lab_website_kimibase/
 │   ├── data/              # ★ 核心数据文件（修改内容主要在这里）
 │   │   ├── site.ts        #   基本信息（实验室名称、邮箱、地址等）
 │   │   ├── people.ts      #   团队成员信息
-│   │   ├── research.ts    #   研究方向介绍
+│   │   ├── research.ts    #   研究方向介绍（含结构化字段）
+│   │   ├── researchApproach.ts # 研究循环步骤
 │   │   ├── publications.ts #   Seed 论文列表
 │   │   └── ...
 │   ├── pages/             # ★ 各页面组件（需要改页面结构时在这里）
@@ -82,7 +83,7 @@ lab_website_kimibase/
 export const siteConfig: SiteConfig = {
   labName: "Systems Aging Lab",            // 实验室名称
   institution: "Westlake University",       // 所属机构
-  tagline: "Discovering design principles…", // 标语
+  tagline: "Simple laws as clues to hidden principles in biology", // 标语
   description: "We use mathematical modeling…", // 描述
   email: "yangyifan@westlake.edu.cn",        // 联系邮箱
   address: "Westlake University, Hangzhou, China", // 地址
@@ -117,7 +118,29 @@ export const people: Person[] = [
 
 **文件：** [`src/data/research.ts`](src/data/research.ts)
 
-修改 `researchContent` 对象的 `overview`（概述）、`areas`（各研究方向）、`closingText`（结尾语）字段。每个研究方向可配图（放在 `public/images/research/` 下）。
+修改 `researchContent` 对象：
+- `heroTitle` / `heroSubtitle`：Research 页顶部标题与副标题
+- `overview`：研究总述
+- `closingText`：结尾语
+- `areas`：每个研究方向（Research 页会自动渲染）
+
+每个 `area` 可包含以下字段（**页面会自动渲染这些结构化字段，改文字只改这里、无需动组件**）：
+
+```ts
+{
+  id: "beyond-growth",
+  title: "What replaces growth rate when cells stop growing?",
+  description: "主体描述文字…",
+  image: "/images/research/xxx.png",   // 可选，放在 public/images/research/ 下
+  maturity: "active",                   // 可选：active | developing | exploratory（影响徽章配色）
+  system: "Starving E. coli",           // 可选：实验体系（显示为徽章）
+  centralQuestion: "核心问题…",          // 可选
+  currentEvidence: "当前证据…",          // 可选
+  openQuestion: "开放问题…",             // 可选
+}
+```
+
+> Research 页的「研究循环」(From simple laws to testable mechanisms) 步骤文字在 [`src/data/researchApproach.ts`](src/data/researchApproach.ts) 的 `steps` 数组里修改；循环的视觉样式（U 型、滑动箭头速度等）在 [`src/components/ResearchCycle.tsx`](src/components/ResearchCycle.tsx) 与 [`src/index.css`](src/index.css) 的 `.cycle-slide`。
 
 ### 4. 论文列表
 

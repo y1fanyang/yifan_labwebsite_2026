@@ -13,7 +13,7 @@ export const people: Person[] = [
   {
     id: "yifan",
     name: "Yifan Yang",
-    nameCn: "\u6768\u4e00\u5e06",
+    nameCn: "杨一帆",
     role: "pi",
     roleLabel: "Principal Investigator",
     image: "/images/team/yifan-headshot.jpg",
@@ -23,7 +23,7 @@ export const people: Person[] = [
   {
     id: "yihao",
     name: "Yihao Lin",
-    nameCn: "\u6797\u5955\u8c6a",
+    nameCn: "林奕豪",
     role: "phd",
     roleLabel: "PhD Student",
     image: "/images/team/yihao-headshot.png",
@@ -33,7 +33,7 @@ export const people: Person[] = [
   {
     id: "kaijun",
     name: "Kaijun Wang",
-    nameCn: "\u738b\u607a\u541b",
+    nameCn: "王恺君",
     role: "phd",
     roleLabel: "PhD Student",
     image: "/images/team/kaijun-headshot.png",
@@ -43,7 +43,7 @@ export const people: Person[] = [
   {
     id: "zhirui",
     name: "Zhirui Liu",
-    nameCn: "\u5218\u4e4b\u777f",
+    nameCn: "刘之睿",
     role: "staff",
     roleLabel: "Research Assistant",
     image: "/images/team/zhirui-headshot.png",
@@ -53,7 +53,7 @@ export const people: Person[] = [
   {
     id: "dan",
     name: "Dan Huang",
-    nameCn: "\u9ec4\u4e39",
+    nameCn: "黄丹",
     role: "staff",
     roleLabel: "Research Assistant",
     image: "/images/team/dan-headshot.png",
@@ -63,7 +63,7 @@ export const people: Person[] = [
   {
     id: "lanning",
     name: "Lanning Liu",
-    nameCn: "\u5218\u5170\u51dd",
+    nameCn: "刘兰凝",
     role: "staff",
     roleLabel: "Administrative Assistant",
     image: "/images/team/lanning-headshot.jpg",
@@ -73,9 +73,9 @@ export const people: Person[] = [
   {
     id: "hongjie",
     name: "Hongjie Wang",
-    nameCn: "\u738b\u6dfc\u6770",
-    role: "visitor",
-    roleLabel: "Visiting Student",
+    nameCn: "王泓杰",
+    role: "staff",
+    roleLabel: "Research Assistant",
     image: "/images/team/hongjie-headshot.png",
     email: "wanghongjie@westlake.edu.cn",
     bio: "Hongjie graduated from Chongqing Medical University with a bachelor's degree in Clinical Medicine and joined the laboratory in 2026. He enjoys approaching biomedical problems from quantitative and physics-based perspectives. Outside the lab, he likes to explore nature.",

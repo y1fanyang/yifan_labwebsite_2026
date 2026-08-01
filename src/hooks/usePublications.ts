@@ -5,7 +5,7 @@ import { fetchOrcidWorks } from "@/services/orcidApi";
 import { fetchAuthorsBatch } from "@/services/crossrefApi";
 
 const ORCID_ID = "0000-0001-6697-0198";
-const CACHE_KEY = "orcid_publications_v1";
+const CACHE_KEY = "orcid_publications_v2";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 interface CacheEntry {
