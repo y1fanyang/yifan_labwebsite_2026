@@ -5,20 +5,6 @@ import SurvivalCurve from "@/components/SurvivalCurve";
 
 import { ResearchCycle } from "@/components/ResearchCycle";
 
-const maturityStyle = (maturity: string): React.CSSProperties => {
-  if (maturity === "active") {
-    return { backgroundColor: "var(--color-primary)", color: "var(--bg-primary)" };
-  }
-  if (maturity === "developing") {
-    return { backgroundColor: "var(--color-secondary)", color: "var(--bg-primary)" };
-  }
-  return {
-    backgroundColor: "transparent",
-    color: "var(--text-muted)",
-    border: "1px solid var(--border)",
-  };
-};
-
 const Research: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
@@ -127,28 +113,17 @@ const Research: React.FC = () => {
                     </p>
 
                     {/* Structured fields — all text comes from research.ts */}
-                    {(area.system || area.maturity) && (
+                    {area.system && (
                       <div className="mt-6 flex flex-wrap items-center gap-2">
-                        {area.system && (
-                          <span
-                            className="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
-                            style={{
-                              backgroundColor: "var(--color-accent)",
-                              color: "var(--color-primary)",
-                            }}
-                          >
-                            {area.system}
-                          </span>
-                        )}
-                        {area.maturity && (
-                          <span
-                            className="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
-                            style={maturityStyle(area.maturity)}
-                          >
-                            {area.maturity.charAt(0).toUpperCase() +
-                              area.maturity.slice(1)}
-                          </span>
-                        )}
+                        <span
+                          className="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
+                          style={{
+                            backgroundColor: "var(--color-accent)",
+                            color: "var(--color-primary)",
+                          }}
+                        >
+                          {area.system}
+                        </span>
                       </div>
                     )}
 
