@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Users, FlaskConical } from "lucide-react";
+import { ArrowRight, BookOpen, FlaskConical } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { getHighlightPublications, sortPublicationsByYear } from "@/data/publications";
 import { usePublications } from "@/hooks/usePublications";
 import { sortPeople, people } from "@/data/people";
 import SurvivalCurve from "@/components/SurvivalCurve";
 import MicrofluidicMatrix from "@/components/MicrofluidicMatrix";
+import { ResearchCycle } from "@/components/ResearchCycle";
 import FadeInSection from "@/components/FadeInSection";
 import AvatarFallback from "@/components/AvatarFallback";
 
@@ -104,100 +105,17 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Research Overview */}
+      {/* How We Work — compact research cycle preview */}
       <section
         className="py-20 lg:py-28"
         style={{ backgroundColor: "var(--bg-card)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <p
-                className="text-sm font-medium uppercase tracking-widest mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Research Overview
-              </p>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
-                style={{ color: "var(--color-primary)" }}
-              >
-                Understanding Homeostasis Through Aging
-              </h2>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Biological systems such as tissues and cells, despite being made
-                from noisy and error-prone components, are strikingly robust due
-                to intricate networks of control circuits collectively known as
-                homeostasis.
-              </p>
+            <div className="max-w-5xl mx-auto">
+              <ResearchCycle variant="compact" />
             </div>
           </FadeInSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <FlaskConical size={24} />,
-                title: "Aging Dynamics",
-                description:
-                  "We discover design principles of homeostasis through its unraveling in aging and stress, using quantitative measurements and mathematical modeling.",
-                link: "/research",
-              },
-              {
-                icon: <BookOpen size={24} />,
-                title: "Publications",
-                description:
-                  "Our work has been published in leading journals including Nature Communications, Science Advances, and mBio.",
-                link: "/publications",
-              },
-              {
-                icon: <Users size={24} />,
-                title: "Our Team",
-                description:
-                  "A diverse group of researchers passionate about systems biology, quantitative methods, and understanding the fundamental principles of life.",
-                link: "/people",
-              },
-            ].map((item, index) => (
-              <FadeInSection key={item.title} delay={index * 0.1}>
-                <Link
-                  to={item.link}
-                  className="group block p-6 lg:p-8 rounded-xl no-underline transition-all duration-300 h-full"
-                  style={{
-                    backgroundColor: "var(--bg-primary)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  <div
-                    className="mb-4 transition-colors duration-200"
-                    style={{ color: "var(--color-primary)" }}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3
-                    className="text-lg font-semibold mb-3"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {item.description}
-                  </p>
-                  <div
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium transition-all duration-200 group-hover:gap-2"
-                    style={{ color: "var(--color-secondary)" }}
-                  >
-                    Learn more
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-              </FadeInSection>
-            ))}
-          </div>
         </div>
       </section>
 

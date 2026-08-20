@@ -291,6 +291,41 @@
     }
   }
 
+  /* Research cycle — ONE continuous 6s loop, all parts share the period:
+     phase 1 (~0-58%): the 4 inter-card arrows light up in sequence (1->2->3->4->5);
+     phase 2 (~60-98%): the bottom arrow glides back to the start (5->1);
+     then it repeats. animation-delay staggers the top arrows within phase 1. */
+  .cycle-arrow {
+    color: var(--color-secondary);
+    animation-name: cycle-pulse;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+  }
+
+  @keyframes cycle-pulse {
+    0%, 1% { opacity: 0.3; transform: scale(1); }
+    3% { opacity: 1; transform: scale(1.45); }
+    12% { opacity: 1; transform: scale(1.45); }
+    14% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(1); }
+  }
+
+  .cycle-slide {
+    animation-name: cycle-slide;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes cycle-slide {
+    0%, 60% { left: 100%; opacity: 0; }
+    62% { left: 100%; opacity: 1; }
+    98% { left: 0%; opacity: 1; }
+    100% { left: 0%; opacity: 0; }
+  }
+
   /* Line clamp utilities */
   .line-clamp-2 {
     display: -webkit-box;

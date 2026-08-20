@@ -109,7 +109,7 @@ export async function fetchOrcidWorks(
     const journal = summary["journal-title"]?.value || "";
 
     publications.push({
-      id: `orcid-${doi.replace(/[\/\.]/g, "-")}`,
+      id: `orcid-${doi.replace(/[/.]/g, "-")}`,
       title,
       authors: [], // Will be populated by Crossref
       journal: journal || "Preprint",
@@ -125,6 +125,18 @@ export async function fetchOrcidWorks(
     });
   }
 
+  // Drop incomplete records (missing publication year) and deduplicate by DOI.
+  // ORCID sometimes holds a second, dateless copy of a paper, which would
+  // otherwise surface as a year-0 duplicate of the real entry.
+  const byDoi = new Map<string, Publication>();
+  for (const pub of publications) {
+    if (pub.year <= 0) continue; // skip records without a valid year
+    const existing = byDoi.get(pub.doi);
+    if (!existing || pub.year > existing.year) {
+      byDoi.set(pub.doi, pub);
+    }
+  }
+
   // Sort by year descending
-  return publications.sort((a, b) => b.year - a.year);
+  return Array.from(byDoi.values()).sort((a, b) => b.year - a.year);
 }

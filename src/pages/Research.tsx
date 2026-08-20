@@ -70,15 +70,20 @@ const Research: React.FC = () => {
       {/* Research approach */}
       <section
         className="py-20 lg:py-28"
-        style={{ backgroundColor: "var(--bg-card)" }}
+        style={{ backgroundColor: "var(--bg-primary)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ResearchCycle variant="full" />
+          <FadeInSection>
+            <ResearchCycle variant="full" />
+          </FadeInSection>
         </div>
       </section>
 
       {/* Research Areas */}
-      <section className="py-20 lg:py-28">
+      <section
+        className="py-20 lg:py-28"
+        style={{ backgroundColor: "var(--bg-card)" }}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="space-y-20 lg:space-y-28">
             {researchContent.areas.map((area, index) => (
@@ -106,6 +111,76 @@ const Research: React.FC = () => {
                     >
                       {area.description}
                     </p>
+
+                    {/* Structured fields — all text comes from research.ts */}
+                    {area.system && (
+                      <div className="mt-6 flex flex-wrap items-center gap-2">
+                        <span
+                          className="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
+                          style={{
+                            backgroundColor: "var(--color-accent)",
+                            color: "var(--color-primary)",
+                          }}
+                        >
+                          {area.system}
+                        </span>
+                      </div>
+                    )}
+
+                    {(area.centralQuestion ||
+                      area.currentEvidence ||
+                      area.openQuestion) && (
+                      <dl className="mt-6 space-y-4">
+                        {area.centralQuestion && (
+                          <div>
+                            <dt
+                              className="text-xs font-medium uppercase tracking-wide mb-1"
+                              style={{ color: "var(--text-muted)" }}
+                            >
+                              Central question
+                            </dt>
+                            <dd
+                              className="text-sm leading-relaxed"
+                              style={{ color: "var(--text-secondary)" }}
+                            >
+                              {area.centralQuestion}
+                            </dd>
+                          </div>
+                        )}
+                        {area.currentEvidence && (
+                          <div>
+                            <dt
+                              className="text-xs font-medium uppercase tracking-wide mb-1"
+                              style={{ color: "var(--text-muted)" }}
+                            >
+                              Current evidence
+                            </dt>
+                            <dd
+                              className="text-sm leading-relaxed"
+                              style={{ color: "var(--text-secondary)" }}
+                            >
+                              {area.currentEvidence}
+                            </dd>
+                          </div>
+                        )}
+                        {area.openQuestion && (
+                          <div>
+                            <dt
+                              className="text-xs font-medium uppercase tracking-wide mb-1"
+                              style={{ color: "var(--text-muted)" }}
+                            >
+                              Open question
+                            </dt>
+                            <dd
+                              className="text-sm leading-relaxed"
+                              style={{ color: "var(--text-secondary)" }}
+                            >
+                              {area.openQuestion}
+                            </dd>
+                          </div>
+                        )}
+                      </dl>
+                    )}
                   </div>
 
                   <div
@@ -155,7 +230,7 @@ const Research: React.FC = () => {
       {/* Closing */}
       <section
         className="py-16 lg:py-20"
-        style={{ backgroundColor: "var(--bg-card)" }}
+        style={{ backgroundColor: "var(--bg-primary)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
