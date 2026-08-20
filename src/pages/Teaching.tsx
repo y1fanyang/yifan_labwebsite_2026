@@ -1,9 +1,121 @@
 import React from "react";
 import FadeInSection from "@/components/FadeInSection";
 import SurvivalCurve from "@/components/SurvivalCurve";
-import { BookOpen, GraduationCap } from "lucide-react";
+import {
+  BookOpen,
+  GraduationCap,
+  FileText,
+  CalendarDays,
+  Clock,
+  MapPin,
+  Globe,
+  Users,
+  Download,
+  ListChecks,
+} from "lucide-react";
+import { course } from "@/data/course";
+import type { DownloadItem, CoursePerson } from "@/data/course";
+
+const SectionHeader: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+}> = ({ icon, title }) => (
+  <FadeInSection>
+    <div className="flex items-center gap-3 mb-8">
+      <div
+        className="w-10 h-10 rounded-lg flex items-center justify-center"
+        style={{
+          backgroundColor: "var(--color-accent)",
+          color: "var(--color-primary)",
+        }}
+      >
+        {icon}
+      </div>
+      <h2
+        className="text-xl"
+        style={{ color: "var(--color-primary)" }}
+      >
+        {title}
+      </h2>
+    </div>
+  </FadeInSection>
+);
+
+const MetaRow: React.FC<{
+  icon: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+}> = ({ icon, label, children }) => (
+  <div
+    className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-3 border-b last:border-0"
+    style={{ borderColor: "var(--border)" }}
+  >
+    <span
+      className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider sm:w-36 shrink-0"
+      style={{ color: "var(--text-muted)" }}
+    >
+      {icon}
+      {label}
+    </span>
+    <span className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+      {children}
+    </span>
+  </div>
+);
+
+const PersonList: React.FC<{ people: CoursePerson[] }> = ({ people }) => (
+  <div className="space-y-1">
+    {people.map((p, i) => (
+      <div key={i}>
+        <span>{p.name}</span>
+        {p.email && (
+          <span style={{ color: "var(--text-muted)" }}>
+            {" "}
+            ({p.email})
+          </span>
+        )}
+        {p.note && (
+          <span style={{ color: "var(--text-muted)" }}> — {p.note}</span>
+        )}
+      </div>
+    ))}
+  </div>
+);
+
+const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
+  <a
+    href={item.file}
+    download
+    className="group flex items-center justify-between gap-3 p-4 rounded-lg no-underline transition-colors duration-200 hover:opacity-90"
+    style={{
+      backgroundColor: "var(--bg-card)",
+      border: "1px solid var(--border)",
+    }}
+  >
+    <span className="flex items-center gap-3 min-w-0">
+      <FileText
+        size={18}
+        className="shrink-0"
+        style={{ color: "var(--color-secondary)" }}
+      />
+      <span
+        className="text-sm font-medium truncate"
+        style={{ color: "var(--text-primary)" }}
+      >
+        {item.label}
+      </span>
+    </span>
+    <Download
+      size={16}
+      className="shrink-0"
+      style={{ color: "var(--color-secondary)" }}
+    />
+  </a>
+);
 
 const Teaching: React.FC = () => {
+  const website = course.website || "TBA";
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
@@ -24,10 +136,10 @@ const Teaching: React.FC = () => {
                 Education
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 Teaching
@@ -43,88 +155,232 @@ const Teaching: React.FC = () => {
         </div>
       </section>
 
-      {/* Course Material Section */}
+      {/* Course Introduction */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <FadeInSection>
-            <div className="flex items-center gap-3 mb-8">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{
-                  backgroundColor: "var(--color-accent)",
-                  color: "var(--color-primary)",
-                }}
-              >
-                <BookOpen size={20} />
-              </div>
-              <h2
-                className="text-xl font-semibold"
-                style={{ color: "var(--color-primary)" }}
-              >
-                Course Material
-              </h2>
-            </div>
-          </FadeInSection>
+          <SectionHeader
+            icon={<GraduationCap size={20} />}
+            title="Course Introduction"
+          />
 
           <FadeInSection delay={0.1}>
             <div
-              className="p-8 lg:p-12 rounded-xl min-h-[200px] flex items-center justify-center"
+              className="p-8 lg:p-10 rounded-xl"
               style={{
                 backgroundColor: "var(--bg-card)",
                 border: "1px solid var(--border)",
               }}
             >
-              <p
-                className="text-sm text-center"
-                style={{ color: "var(--text-muted)" }}
+              <h3
+                className="text-lg mb-1"
+                style={{ color: "var(--color-primary)" }}
               >
-                Course materials will be posted here soon.
-              </p>
+                {course.code}: {course.title}
+              </h3>
+
+              <div className="mt-6">
+                <MetaRow icon={<CalendarDays size={14} />} label="Term">
+                  {course.term}
+                </MetaRow>
+                <MetaRow icon={<Clock size={14} />} label="Time">
+                  {course.time}
+                </MetaRow>
+                <MetaRow icon={<MapPin size={14} />} label="Location">
+                  {course.location}
+                </MetaRow>
+                <MetaRow icon={<Globe size={14} />} label="Website">
+                  {website}
+                </MetaRow>
+                <MetaRow icon={<Users size={14} />} label="Lecturer">
+                  <PersonList people={course.lecturers} />
+                </MetaRow>
+                <MetaRow icon={<GraduationCap size={14} />} label="TAs">
+                  <PersonList people={course.tas} />
+                </MetaRow>
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <div>
+                  <p
+                    className="text-xs font-semibold uppercase tracking-wider mb-2"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Course Description
+                  </p>
+                  {course.description.map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-sm leading-relaxed mb-3 last:mb-0"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+                <div>
+                  <p
+                    className="text-xs font-semibold uppercase tracking-wider mb-2"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Prerequisites
+                  </p>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {course.prerequisites}
+                  </p>
+                </div>
+              </div>
             </div>
           </FadeInSection>
         </div>
       </section>
 
-      {/* 课程介绍 Section */}
+      {/* Course Outline */}
       <section
         className="py-16 lg:py-20"
         style={{ backgroundColor: "var(--bg-card)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <FadeInSection>
-            <div className="flex items-center gap-3 mb-8">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{
-                  backgroundColor: "var(--color-accent)",
-                  color: "var(--color-primary)",
-                }}
-              >
-                <GraduationCap size={20} />
-              </div>
-              <h2
-                className="text-xl font-semibold"
-                style={{ color: "var(--color-primary)" }}
-              >
-                Course Introduction
-              </h2>
+          <SectionHeader
+            icon={<FileText size={20} />}
+            title="Course Outline"
+          />
+
+          <FadeInSection delay={0.1}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {course.outlineFiles.map((item) => (
+                <DownloadRow key={item.file} item={item} />
+              ))}
+            </div>
+          </FadeInSection>
+        </div>
+      </section>
+
+      {/* Course Material */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <SectionHeader
+            icon={<BookOpen size={20} />}
+            title="Course Material"
+          />
+
+          {/* Downloadable materials */}
+          <FadeInSection delay={0.1}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {course.materials.map((item) => (
+                <DownloadRow key={item.file} item={item} />
+              ))}
             </div>
           </FadeInSection>
 
-          <FadeInSection delay={0.1}>
+          {/* Lectures */}
+          <FadeInSection delay={0.15}>
+            <h3
+              className="text-base mt-10 mb-4"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Lectures
+            </h3>
             <div
-              className="p-8 lg:p-12 rounded-xl min-h-[200px] flex items-center justify-center"
+              className="rounded-xl overflow-hidden"
               style={{
-                backgroundColor: "var(--bg-primary)",
+                backgroundColor: "var(--bg-card)",
                 border: "1px solid var(--border)",
               }}
             >
-              <p
-                className="text-sm text-center"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Course introduction will be posted here soon.
-              </p>
+              {course.lectures.map((lecture, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 px-5 py-3 border-b last:border-0"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <span
+                    className="text-xs font-semibold uppercase tracking-wider w-20 shrink-0"
+                    style={{ color: "var(--color-secondary)" }}
+                  >
+                    Lecture {i + 1}
+                  </span>
+                  <span
+                    className="text-sm flex-1 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {lecture.title}
+                  </span>
+                  {lecture.file ? (
+                    <a
+                      href={lecture.file}
+                      download
+                      className="no-underline hover:opacity-80"
+                    >
+                      <Download
+                        size={15}
+                        style={{ color: "var(--color-secondary)" }}
+                      />
+                    </a>
+                  ) : (
+                    <span
+                      className="text-xs shrink-0"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      coming soon
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </FadeInSection>
+
+          {/* Problem Sets (separate, after all lectures) */}
+          <FadeInSection delay={0.2}>
+            <h3
+              className="flex items-center gap-2 text-base mt-10 mb-4"
+              style={{ color: "var(--color-primary)" }}
+            >
+              <ListChecks size={16} />
+              Problem Sets
+            </h3>
+            <div
+              className="rounded-xl overflow-hidden"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {course.problemSets.map((ps, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 px-5 py-3 border-b last:border-0"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <span
+                    className="text-sm flex-1 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {ps.title}
+                  </span>
+                  {ps.file ? (
+                    <a
+                      href={ps.file}
+                      download
+                      className="no-underline hover:opacity-80"
+                    >
+                      <Download
+                        size={15}
+                        style={{ color: "var(--color-secondary)" }}
+                      />
+                    </a>
+                  ) : (
+                    <span
+                      className="text-xs shrink-0"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      coming soon
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
           </FadeInSection>
         </div>

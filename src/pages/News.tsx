@@ -133,10 +133,10 @@ const News: React.FC = () => {
                 Updates
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 News
@@ -193,7 +193,7 @@ const News: React.FC = () => {
                       </span>
                     </div>
                     <h2
-                      className="text-xl lg:text-2xl font-bold mb-3"
+                      className="text-xl lg:text-2xl mb-3"
                       style={{ color: "var(--text-primary)" }}
                     >
                       {item.title}

@@ -2,10 +2,10 @@ export interface Person {
   id: string;
   name: string;
   nameCn?: string;
-  role: "pi" | "phd" | "staff" | "postdoc" | "visitor" | "alumni";
+  role: "pi" | "assistant" | "phd" | "staff" | "postdoc" | "visitor" | "alumni";
   roleLabel: string;
   image: string;
-  email: string;
+  email?: string;
   bio: string;
 }
 
@@ -19,6 +19,15 @@ export const people: Person[] = [
     image: "/images/team/yifan-headshot.jpg",
     email: "yangyifan@westlake.edu.cn",
     bio: "Yifan started his own group at Westlake after his postdoc at Weizmann Institute of Science. In his personal time, he likes to read about history and plays with his kids.",
+  },
+  {
+    id: "jinjian",
+    name: "Jinjian Xu",
+    nameCn: "徐锦建",
+    role: "assistant",
+    roleLabel: "Assistant Research Fellow",
+    image: "/images/team/jinjian-headshot.jpg",
+    bio: "Dr Jinjian Xu obtained his PhD in Epidemiology and Health Statistics from Sun Yat‑sen University in 2024. He completed his postdoctoral research at Zhejiang Provincial People’s Hospital from 2024 to 2026, where he advanced the development and translational application of intelligent assessment and risk‑management systems for ageing‑related diseases. Appointed as an Assistant Research Fellow in the Yang Lab at the Centre for Interdisciplinary Science in 2026, he conducts cross‑disciplinary work combining damage‑dynamics mathematical models with multi‑omics data to connect molecular‑level alterations to organ‑level physiological states. Drawing on population‑cohort multi‑omics big data and artificial‑intelligence algorithms, his research explores pathogenic mechanisms, intervention targets and novel biomarkers for ageing‑associated chronic conditions such as metabolic disorders and cognitive decline.\n\nHe applies bioinformatic tools to profile gut microbiomes in older Chinese populations, dissect microbe‑host interactions governing ageing and metabolic phenotypes, and develops omics clocks and biomarkers to track biological age, forecast health trajectories and clarify their fundamental biological underpinnings.",
   },
   {
     id: "yihao",
@@ -58,7 +67,7 @@ export const people: Person[] = [
     roleLabel: "Research Assistant",
     image: "/images/team/dan-headshot.png",
     email: "huangdan09@westlake.edu.cn",
-    bio: "Dan joined Yifan Lab as a Research Assistant in 2015. An avid wildlife photographer, she loves caring for her pet cat and bunny in her free time.",
+    bio: "Dan joined Yifan Lab as a Research Assistant in 2025. An avid wildlife photographer, she loves caring for her pet cat and bunny in her free time.",
   },
   {
     id: "lanning",
@@ -80,9 +89,18 @@ export const people: Person[] = [
     email: "wanghongjie@westlake.edu.cn",
     bio: "Hongjie graduated from Chongqing Medical University with a bachelor's degree in Clinical Medicine and joined the laboratory in 2026. He enjoys approaching biomedical problems from quantitative and physics-based perspectives. Outside the lab, he likes to explore nature.",
   },
+  {
+    id: "weirong",
+    name: "WeiRong Xiang",
+    nameCn: "向薇蓉",
+    role: "visitor",
+    roleLabel: "Visiting Student",
+    image: "/images/team/weirong-headshot.jpg",
+    bio: "WeiRong studied Marine Science at Sun Yat-sen University and Biochemistry at Fudan University. Outside the lab, I'm into rock 'n' roll and live music.",
+  },
 ];
 
-export const roleOrder = ["pi", "phd", "postdoc", "staff", "visitor", "alumni"];
+export const roleOrder = ["pi", "assistant", "phd", "postdoc", "staff", "visitor", "alumni"];
 
 export function sortPeople(peopleList: Person[]): Person[] {
   return [...peopleList].sort((a, b) => {

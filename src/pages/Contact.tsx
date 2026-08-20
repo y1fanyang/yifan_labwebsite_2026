@@ -18,10 +18,10 @@ const Contact: React.FC = () => {
                 Get in Touch
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 Contact Us
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
                   <Mail size={20} />
                 </div>
                 <h3
-                  className="text-lg font-semibold mb-3"
+                  className="text-lg mb-3"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Email
@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
                   <MapPin size={20} />
                 </div>
                 <h3
-                  className="text-lg font-semibold mb-3"
+                  className="text-lg mb-3"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Location
@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
                 <FlaskConical size={28} />
               </div>
               <h2
-                className="text-2xl sm:text-3xl font-bold mb-4"
+                className="text-2xl sm:text-3xl mb-4"
                 style={{ color: "var(--color-primary)" }}
               >
                 Join the Lab
@@ -185,7 +185,7 @@ const Contact: React.FC = () => {
                   }}
                 >
                   <h3
-                    className="text-base font-semibold mb-3"
+                    className="text-base mb-3"
                     style={{ color: "var(--text-primary)" }}
                   >
                     {item.title}

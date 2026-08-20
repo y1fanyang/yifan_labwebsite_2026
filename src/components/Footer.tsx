@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { siteConfig, navItems } from "@/data/site";
 import MicrofluidicMatrix from "./MicrofluidicMatrix";
+import LabLogos from "./LabLogos";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -25,7 +26,7 @@ const Footer: React.FC = () => {
           {/* Lab info */}
           <div>
             <h3
-              className="text-base font-semibold mb-3"
+              className="text-base mb-3"
               style={{ color: "var(--color-primary)" }}
             >
               {siteConfig.labName}
@@ -53,12 +54,16 @@ const Footer: React.FC = () => {
                 {siteConfig.address}
               </div>
             </div>
+
+            <div className="mt-4">
+              <LabLogos height={28} />
+            </div>
           </div>
 
           {/* Quick links */}
           <div>
             <h3
-              className="text-base font-semibold mb-3"
+              className="text-base mb-3"
               style={{ color: "var(--color-primary)" }}
             >
               Quick Links
@@ -81,7 +86,7 @@ const Footer: React.FC = () => {
           {/* Resources */}
           <div>
             <h3
-              className="text-base font-semibold mb-3"
+              className="text-base mb-3"
               style={{ color: "var(--color-primary)" }}
             >
               Resources
@@ -114,15 +119,20 @@ const Footer: React.FC = () => {
         </div>
 
         <div
-          className="mt-10 pt-6 text-center text-xs"
+          className="mt-10 pt-6 flex flex-col items-center gap-4"
           style={{
-            color: "var(--text-muted)",
             borderTop: "1px solid var(--border)",
           }}
         >
-          &copy; {currentYear} {siteConfig.labName},{" "}
-          {siteConfig.institution}. All rights reserved.
+          <p
+            className="text-xs text-center"
+            style={{ color: "var(--text-muted)" }}
+          >
+            &copy; {currentYear} {siteConfig.labName},{" "}
+            {siteConfig.institution}. All rights reserved.
+          </p>
         </div>
+
       </div>
     </footer>
   );

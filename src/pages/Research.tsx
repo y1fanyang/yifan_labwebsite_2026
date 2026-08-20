@@ -26,10 +26,10 @@ const Research: React.FC = () => {
                 What We Study
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 {researchContent.heroTitle}
@@ -97,7 +97,7 @@ const Research: React.FC = () => {
                       Research Area {index + 1}
                     </p>
                     <h2
-                      className="text-2xl sm:text-3xl font-bold mb-6"
+                      className="text-2xl sm:text-3xl mb-6"
                       style={{ color: "var(--color-primary)" }}
                     >
                       {area.title}

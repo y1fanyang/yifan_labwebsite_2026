@@ -56,10 +56,10 @@ const Publications: React.FC = () => {
                 Publications
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 Our Research Papers
@@ -144,7 +144,7 @@ const Publications: React.FC = () => {
                 <div key={year} className="mb-16 last:mb-0">
                   <FadeInSection>
                     <h2
-                      className="text-2xl font-bold mb-8 pb-3"
+                      className="text-2xl mb-8 pb-3"
                       style={{
                         color: "var(--color-primary)",
                         borderBottom: "2px solid var(--color-primary)",
@@ -168,7 +168,7 @@ const Publications: React.FC = () => {
                           <div className="relative">
                             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                               <div className="flex-1">
-                                <h3 className="text-base font-semibold mb-2 leading-snug">
+                                <h3 className="text-base mb-2 leading-snug">
                                   <a
                                     href={pub.link}
                                     target="_blank"

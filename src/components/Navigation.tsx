@@ -39,7 +39,7 @@ const Navigation: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="nav-link relative px-3 py-2 text-sm font-medium no-underline transition-colors duration-200"
+                className="nav-link relative px-3 py-2 text-sm font-semibold no-underline transition-colors duration-200"
                 style={{
                   color: isActive(item.path)
                     ? "var(--color-primary)"
@@ -91,7 +91,7 @@ const Navigation: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2 text-sm font-medium rounded-lg no-underline transition-colors"
+                className="block px-3 py-2 text-sm font-semibold rounded-lg no-underline transition-colors"
                 style={{
                   color: isActive(item.path)
                     ? "var(--color-primary)"

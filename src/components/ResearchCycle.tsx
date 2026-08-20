@@ -23,7 +23,7 @@ export function ResearchCycle({
           </p>
 
           <h2
-            className="text-2xl sm:text-3xl font-bold mb-4"
+            className="text-2xl sm:text-3xl mb-4"
             style={{ color: "var(--color-primary)" }}
           >
             {title}
@@ -103,7 +103,7 @@ export function ResearchCycle({
         </p>
 
         <h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5"
+          className="text-2xl sm:text-3xl lg:text-4xl mb-5"
           style={{ color: "var(--color-primary)" }}
         >
           {title}
@@ -138,7 +138,7 @@ export function ResearchCycle({
                   {step.number}
                 </span>
                 <h3
-                  className="text-lg font-semibold mb-2 leading-snug"
+                  className="text-lg mb-2 leading-snug"
                   style={{ color: "var(--text-primary)" }}
                 >
                   {step.title}
@@ -219,7 +219,7 @@ export function ResearchCycle({
                   {step.number}
                 </span>
                 <h3
-                  className="text-base font-semibold mb-2"
+                  className="text-base mb-2"
                   style={{ color: "var(--text-primary)" }}
                 >
                   {step.title}

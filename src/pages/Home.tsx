@@ -46,10 +46,10 @@ const Home: React.FC = () => {
 
             <FadeInSection delay={0.1}>
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                className="text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6"
                 style={{
                   color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 {siteConfig.labName}
@@ -132,7 +132,7 @@ const Home: React.FC = () => {
                   Featured Work
                 </p>
                 <h2
-                  className="text-2xl sm:text-3xl font-bold"
+                  className="text-2xl sm:text-3xl"
                   style={{ color: "var(--color-primary)" }}
                 >
                   Selected Publications
@@ -162,7 +162,7 @@ const Home: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                     <div className="flex-1">
                       <h3
-                        className="text-base font-semibold mb-2 leading-snug"
+                        className="text-base mb-2 leading-snug"
                         style={{ color: "var(--text-primary)" }}
                       >
                         <a
@@ -236,7 +236,7 @@ const Home: React.FC = () => {
                   Our Team
                 </p>
                 <h2
-                  className="text-2xl sm:text-3xl font-bold"
+                  className="text-2xl sm:text-3xl"
                   style={{ color: "var(--color-primary)" }}
                 >
                   Meet the Lab
@@ -289,7 +289,7 @@ const Home: React.FC = () => {
               style={{ backgroundColor: "var(--color-accent)" }}
             >
               <h2
-                className="text-2xl sm:text-3xl font-bold mb-4"
+                className="text-2xl sm:text-3xl mb-4"
                 style={{ color: "var(--color-primary)" }}
               >
                 Interested in Joining?
