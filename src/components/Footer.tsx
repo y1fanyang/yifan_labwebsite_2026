@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { siteConfig, navItems } from "@/data/site";
-import MicrofluidicMatrix from "./MicrofluidicMatrix";
 import LabLogos from "./LabLogos";
 
 const Footer: React.FC = () => {
@@ -10,27 +9,18 @@ const Footer: React.FC = () => {
 
   return (
     <footer
-      className="relative mt-auto"
+      className="mt-auto"
       style={{
         backgroundColor: "var(--bg-primary)",
         borderTop: "1px solid var(--border)",
         transition: "all 0.4s ease",
       }}
     >
-      <div className="absolute bottom-0 right-0 opacity-30 pointer-events-none overflow-hidden">
-        <MicrofluidicMatrix className="w-48 h-32" />
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Lab info */}
           <div>
-            <h3
-              className="text-base mb-3"
-              style={{ color: "var(--color-primary)" }}
-            >
-              {siteConfig.labName}
-            </h3>
+            <h3 className="text-base mb-3">{siteConfig.labName}</h3>
             <p
               className="text-sm mb-4"
               style={{ color: "var(--text-secondary)" }}
@@ -62,12 +52,7 @@ const Footer: React.FC = () => {
 
           {/* Quick links */}
           <div>
-            <h3
-              className="text-base mb-3"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Quick Links
-            </h3>
+            <h3 className="text-base mb-3">Quick Links</h3>
             <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.path}>
@@ -85,12 +70,7 @@ const Footer: React.FC = () => {
 
           {/* Resources */}
           <div>
-            <h3
-              className="text-base mb-3"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Resources
-            </h3>
+            <h3 className="text-base mb-3">Resources</h3>
             <ul className="space-y-2">
               <li>
                 <a

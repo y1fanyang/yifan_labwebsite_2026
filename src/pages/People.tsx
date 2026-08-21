@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Mail } from "lucide-react";
 import { people, sortPeople, roleOrder } from "@/data/people";
 import FadeInSection from "@/components/FadeInSection";
-import SurvivalCurve from "@/components/SurvivalCurve";
 import {
   Dialog,
   DialogContent,
@@ -48,11 +47,8 @@ const PersonCard: React.FC<PersonCardProps> = ({
     >
       {/* Square photo with hover overlay */}
       <div
-        className="relative aspect-square w-full overflow-hidden rounded-xl"
-        style={{
-          backgroundColor: "var(--color-accent)",
-          border: "1px solid var(--border)",
-        }}
+        className="relative aspect-square w-full overflow-hidden"
+        style={{ backgroundColor: "var(--color-accent)" }}
       >
         {!failed && (
           <img
@@ -60,7 +56,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
             alt={name}
             loading="lazy"
             onError={() => setFailed(true)}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover"
           />
         )}
         {failed && (
@@ -91,7 +87,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
       {/* Name + role below the photo */}
       <div className="mt-3">
         <span
-          className="block text-sm font-semibold leading-snug"
+          className="block text-base font-medium leading-snug"
           style={{ color: "var(--text-primary)" }}
         >
           {name}
@@ -146,13 +142,7 @@ const People: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-24 opacity-60">
-            <SurvivalCurve variant="divider" className="w-full h-full" />
-          </div>
-        </div>
-
+      <section className="relative py-20 lg:py-28">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
             <div className="max-w-3xl">
@@ -164,10 +154,7 @@ const People: React.FC = () => {
               </p>
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.015em",
-                }}
+                style={{ letterSpacing: "-0.015em" }}
               >
                 People
               </h1>
@@ -191,7 +178,6 @@ const People: React.FC = () => {
                 <h2
                   className="text-xl mb-8 pb-2"
                   style={{
-                    color: "var(--color-primary)",
                     borderBottom: "1px solid var(--border)",
                   }}
                 >

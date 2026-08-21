@@ -28,7 +28,7 @@ const Navigation: React.FC = () => {
           <Link
             to="/"
             className="flex items-center gap-2 text-lg font-semibold no-underline"
-            style={{ color: "var(--color-primary)" }}
+            style={{ color: "var(--text-primary)" }}
           >
             <span>{siteConfig.labName}</span>
           </Link>
@@ -91,14 +91,11 @@ const Navigation: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2 text-sm font-semibold rounded-lg no-underline transition-colors"
+                className="block px-3 py-2 text-sm font-semibold no-underline transition-colors"
                 style={{
                   color: isActive(item.path)
                     ? "var(--color-primary)"
                     : "var(--text-secondary)",
-                  backgroundColor: isActive(item.path)
-                    ? "var(--color-accent)"
-                    : "transparent",
                 }}
               >
                 {item.label}

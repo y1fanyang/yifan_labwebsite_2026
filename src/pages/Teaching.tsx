@@ -1,6 +1,5 @@
 import React from "react";
 import FadeInSection from "@/components/FadeInSection";
-import SurvivalCurve from "@/components/SurvivalCurve";
 import {
   BookOpen,
   GraduationCap,
@@ -21,22 +20,9 @@ const SectionHeader: React.FC<{
   title: string;
 }> = ({ icon, title }) => (
   <FadeInSection>
-    <div className="flex items-center gap-3 mb-8">
-      <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center"
-        style={{
-          backgroundColor: "var(--color-accent)",
-          color: "var(--color-primary)",
-        }}
-      >
-        {icon}
-      </div>
-      <h2
-        className="text-xl"
-        style={{ color: "var(--color-primary)" }}
-      >
-        {title}
-      </h2>
+    <div className="flex items-center gap-2.5 mb-8">
+      <span style={{ color: "var(--color-secondary)" }}>{icon}</span>
+      <h2 className="text-xl">{title}</h2>
     </div>
   </FadeInSection>
 );
@@ -46,10 +32,7 @@ const MetaRow: React.FC<{
   label: string;
   children: React.ReactNode;
 }> = ({ icon, label, children }) => (
-  <div
-    className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-3 border-b last:border-0"
-    style={{ borderColor: "var(--border)" }}
-  >
+  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-2.5">
     <span
       className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider sm:w-36 shrink-0"
       style={{ color: "var(--text-muted)" }}
@@ -57,7 +40,7 @@ const MetaRow: React.FC<{
       {icon}
       {label}
     </span>
-    <span className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+    <span className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
       {children}
     </span>
   </div>
@@ -86,27 +69,23 @@ const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
   <a
     href={item.file}
     download
-    className="group flex items-center justify-between gap-3 p-4 rounded-lg no-underline transition-colors duration-200 hover:opacity-90"
-    style={{
-      backgroundColor: "var(--bg-card)",
-      border: "1px solid var(--border)",
-    }}
+    className="group flex items-center justify-between gap-3 py-2.5 no-underline transition-opacity duration-200 hover:opacity-70"
   >
-    <span className="flex items-center gap-3 min-w-0">
+    <span className="flex items-center gap-2 min-w-0">
       <FileText
-        size={18}
+        size={16}
         className="shrink-0"
         style={{ color: "var(--color-secondary)" }}
       />
       <span
-        className="text-sm font-medium truncate"
+        className="text-base font-medium truncate"
         style={{ color: "var(--text-primary)" }}
       >
         {item.label}
       </span>
     </span>
     <Download
-      size={16}
+      size={15}
       className="shrink-0"
       style={{ color: "var(--color-secondary)" }}
     />
@@ -119,13 +98,7 @@ const Teaching: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-24 opacity-60">
-            <SurvivalCurve variant="divider" className="w-full h-full" />
-          </div>
-        </div>
-
+      <section className="relative py-20 lg:py-28">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
             <div className="max-w-3xl">
@@ -137,10 +110,7 @@ const Teaching: React.FC = () => {
               </p>
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.015em",
-                }}
+                style={{ letterSpacing: "-0.015em" }}
               >
                 Teaching
               </h1>
@@ -164,17 +134,8 @@ const Teaching: React.FC = () => {
           />
 
           <FadeInSection delay={0.1}>
-            <div
-              className="p-8 lg:p-10 rounded-xl"
-              style={{
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              <h3
-                className="text-lg mb-1"
-                style={{ color: "var(--color-primary)" }}
-              >
+            <div>
+              <h3 className="text-lg mb-1">
                 {course.code}: {course.title}
               </h3>
 
@@ -210,7 +171,7 @@ const Teaching: React.FC = () => {
                   {course.description.map((para, i) => (
                     <p
                       key={i}
-                      className="text-sm leading-relaxed mb-3 last:mb-0"
+                      className="text-base leading-relaxed mb-3 last:mb-0"
                       style={{ color: "var(--text-secondary)" }}
                     >
                       {para}
@@ -225,7 +186,7 @@ const Teaching: React.FC = () => {
                     Prerequisites
                   </p>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-base leading-relaxed"
                     style={{ color: "var(--text-secondary)" }}
                   >
                     {course.prerequisites}
@@ -245,7 +206,7 @@ const Teaching: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHeader
             icon={<FileText size={20} />}
-            title="Course Outline"
+            title="Syllabus"
           />
 
           <FadeInSection delay={0.1}>
@@ -263,7 +224,7 @@ const Teaching: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHeader
             icon={<BookOpen size={20} />}
-            title="Course Material"
+            title="Downloadable materials"
           />
 
           {/* Downloadable materials */}
@@ -277,34 +238,22 @@ const Teaching: React.FC = () => {
 
           {/* Lectures */}
           <FadeInSection delay={0.15}>
-            <h3
-              className="text-base mt-10 mb-4"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Lectures
-            </h3>
-            <div
-              className="rounded-xl overflow-hidden"
-              style={{
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-              }}
-            >
+            <h3 className="text-base mt-10 mb-2">Lecture Notes</h3>
+            <div>
               {course.lectures.map((lecture, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 px-5 py-3 border-b last:border-0"
-                  style={{ borderColor: "var(--border)" }}
+                  className="flex items-center gap-3 py-3"
                 >
                   <span
                     className="text-xs font-semibold uppercase tracking-wider w-20 shrink-0"
-                    style={{ color: "var(--color-secondary)" }}
+                    style={{ color: "var(--text-muted)" }}
                   >
                     Lecture {i + 1}
                   </span>
                   <span
-                    className="text-sm flex-1 leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
+                    className="text-base flex-1 leading-relaxed"
+                    style={{ color: "var(--text-primary)" }}
                   >
                     {lecture.title}
                   </span>
@@ -335,28 +284,20 @@ const Teaching: React.FC = () => {
           {/* Problem Sets (separate, after all lectures) */}
           <FadeInSection delay={0.2}>
             <h3
-              className="flex items-center gap-2 text-base mt-10 mb-4"
-              style={{ color: "var(--color-primary)" }}
+              className="flex items-center gap-2 text-base mt-10 mb-2"
             >
-              <ListChecks size={16} />
+              <ListChecks size={16} style={{ color: "var(--color-secondary)" }} />
               Problem Sets
             </h3>
-            <div
-              className="rounded-xl overflow-hidden"
-              style={{
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-              }}
-            >
+            <div>
               {course.problemSets.map((ps, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 px-5 py-3 border-b last:border-0"
-                  style={{ borderColor: "var(--border)" }}
+                  className="flex items-center gap-3 py-3"
                 >
                   <span
-                    className="text-sm flex-1 leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
+                    className="text-base flex-1 leading-relaxed"
+                    style={{ color: "var(--text-primary)" }}
                   >
                     {ps.title}
                   </span>

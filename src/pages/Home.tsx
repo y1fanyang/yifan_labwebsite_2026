@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, FlaskConical } from "lucide-react";
+import { ArrowRight, BookOpen, ExternalLink, FlaskConical } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { getHighlightPublications, sortPublicationsByYear } from "@/data/publications";
 import { usePublications } from "@/hooks/usePublications";
 import { sortPeople, people } from "@/data/people";
-import SurvivalCurve from "@/components/SurvivalCurve";
-import MicrofluidicMatrix from "@/components/MicrofluidicMatrix";
 import { ResearchCycle } from "@/components/ResearchCycle";
 import FadeInSection from "@/components/FadeInSection";
 import AvatarFallback from "@/components/AvatarFallback";
@@ -21,18 +19,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Microfluidic matrix - right side, subtle background texture */}
-          <div className="absolute top-[15%] right-[3%] w-[35vw] h-[55vh] hidden lg:block">
-            <MicrofluidicMatrix />
-          </div>
-          {/* Survival curve - left 1/3, S-curve from top-left to button area */}
-          <div className="absolute top-[12%] left-0 w-[35vw] h-[70vh] hidden lg:block">
-            <SurvivalCurve variant="hero" className="w-full h-full" />
-          </div>
-        </div>
-
+      <section className="relative min-h-[90vh] flex items-center">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24">
           <div className="max-w-2xl">
             <FadeInSection>
@@ -47,10 +34,7 @@ const Home: React.FC = () => {
             <FadeInSection delay={0.1}>
               <h1
                 className="text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.015em",
-                }}
+                style={{ letterSpacing: "-0.015em" }}
               >
                 {siteConfig.labName}
               </h1>
@@ -67,7 +51,7 @@ const Home: React.FC = () => {
 
             <FadeInSection delay={0.3}>
               <p
-                className="text-base leading-relaxed mb-10 max-w-xl"
+                className="text-lg leading-relaxed mb-10 max-w-xl"
                 style={{ color: "var(--text-primary)" }}
               >
                 {siteConfig.description}
@@ -75,29 +59,24 @@ const Home: React.FC = () => {
             </FadeInSection>
 
             <FadeInSection delay={0.4}>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link
                   to="/research"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium no-underline transition-all duration-250 hover:-translate-y-0.5"
-                  style={{
-                    backgroundColor: "var(--color-primary)",
-                    color: "var(--bg-primary)",
-                  }}
+                  className="inline-flex items-center gap-1.5 text-sm no-underline transition-opacity duration-200 hover:opacity-70"
+                  style={{ color: "var(--color-primary)" }}
                 >
-                  <FlaskConical size={16} />
+                  <FlaskConical size={14} />
                   Our Research
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </Link>
                 <Link
                   to="/publications"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium no-underline transition-all duration-250"
-                  style={{
-                    border: "1px solid var(--border)",
-                    color: "var(--text-primary)",
-                  }}
+                  className="inline-flex items-center gap-1.5 text-sm no-underline transition-opacity duration-200 hover:opacity-70"
+                  style={{ color: "var(--color-primary)" }}
                 >
-                  <BookOpen size={16} />
+                  <BookOpen size={14} />
                   Publications
+                  <ArrowRight size={13} />
                 </Link>
               </div>
             </FadeInSection>
@@ -131,10 +110,7 @@ const Home: React.FC = () => {
                 >
                   Featured Work
                 </p>
-                <h2
-                  className="text-2xl sm:text-3xl"
-                  style={{ color: "var(--color-primary)" }}
-                >
+                <h2 className="text-2xl sm:text-3xl">
                   Selected Publications
                 </h2>
               </div>
@@ -149,57 +125,46 @@ const Home: React.FC = () => {
             </div>
           </FadeInSection>
 
-          <div className="space-y-6">
+          <div>
             {highlightPubs.slice(0, 4).map((pub, index) => (
               <FadeInSection key={pub.id} delay={index * 0.08}>
                 <article
-                  className="group p-6 rounded-xl transition-all duration-300"
-                  style={{
-                    backgroundColor: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                  }}
+                  className="py-8 border-b last:border-0"
+                  style={{ borderColor: "var(--border)" }}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                    <div className="flex-1">
-                      <h3
-                        className="text-base mb-2 leading-snug"
-                        style={{ color: "var(--text-primary)" }}
-                      >
-                        <a
-                          href={pub.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="no-underline hover:underline"
-                          style={{ color: "inherit" }}
-                        >
-                          {pub.title}
-                        </a>
-                      </h3>
-                      <p
-                        className="text-sm mb-2"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        {pub.authors.filter(Boolean).join(", ")}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span
-                          className="text-xs font-medium px-2.5 py-1 rounded-full"
-                          style={{
-                            backgroundColor: "var(--color-accent)",
-                            color: "var(--color-primary)",
-                          }}
-                        >
-                          {pub.journal}
-                        </span>
-                        <span
-                          className="text-xs"
-                          style={{ color: "var(--text-muted)" }}
-                        >
-                          {pub.year}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  <p
+                    className="text-xs mb-2 uppercase tracking-wider"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {pub.journal} · {pub.year}
+                  </p>
+                  <h3 className="text-lg mb-2 leading-snug">
+                    <a
+                      href={pub.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="no-underline hover:underline"
+                      style={{ color: "inherit" }}
+                    >
+                      {pub.title}
+                    </a>
+                  </h3>
+                  <p
+                    className="text-base mb-3"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {pub.authors.filter(Boolean).join(", ")}
+                  </p>
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm no-underline transition-opacity duration-200 hover:opacity-70"
+                    style={{ color: "var(--color-primary)" }}
+                  >
+                    <ExternalLink size={13} />
+                    Journal
+                  </a>
                 </article>
               </FadeInSection>
             ))}
@@ -235,12 +200,7 @@ const Home: React.FC = () => {
                 >
                   Our Team
                 </p>
-                <h2
-                  className="text-2xl sm:text-3xl"
-                  style={{ color: "var(--color-primary)" }}
-                >
-                  Meet the Lab
-                </h2>
+                <h2 className="text-2xl sm:text-3xl">Meet the Lab</h2>
               </div>
               <Link
                 to="/people"
@@ -262,7 +222,7 @@ const Home: React.FC = () => {
                 >
                   <AvatarFallback image={person.image} name={person.name} size={80} />
                   <h3
-                    className="text-sm font-medium mb-0.5"
+                    className="text-base font-medium mb-0.5"
                     style={{ color: "var(--text-primary)" }}
                   >
                     {person.name}
@@ -284,18 +244,12 @@ const Home: React.FC = () => {
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
-            <div
-              className="max-w-2xl mx-auto text-center p-10 lg:p-14 rounded-2xl"
-              style={{ backgroundColor: "var(--color-accent)" }}
-            >
-              <h2
-                className="text-2xl sm:text-3xl mb-4"
-                style={{ color: "var(--color-primary)" }}
-              >
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-2xl sm:text-3xl mb-4">
                 Interested in Joining?
               </h2>
               <p
-                className="text-base mb-8"
+                className="text-lg mb-8"
                 style={{ color: "var(--text-secondary)" }}
               >
                 We are always looking for passionate researchers interested in
@@ -304,14 +258,11 @@ const Home: React.FC = () => {
               </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-medium no-underline transition-all duration-250 hover:-translate-y-0.5"
-                style={{
-                  backgroundColor: "var(--color-primary)",
-                  color: "var(--bg-primary)",
-                }}
+                className="inline-flex items-center gap-1.5 text-sm no-underline transition-opacity duration-200 hover:opacity-70"
+                style={{ color: "var(--color-primary)" }}
               >
                 Contact Us
-                <ArrowRight size={14} />
+                <ArrowRight size={13} />
               </Link>
             </div>
           </FadeInSection>

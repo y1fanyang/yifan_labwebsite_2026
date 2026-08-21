@@ -1,7 +1,6 @@
 import React from "react";
 import { researchContent } from "@/data/research";
 import FadeInSection from "@/components/FadeInSection";
-import SurvivalCurve from "@/components/SurvivalCurve";
 
 import { ResearchCycle } from "@/components/ResearchCycle";
 
@@ -9,13 +8,7 @@ const Research: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-24 opacity-60">
-            <SurvivalCurve variant="divider" className="w-full h-full" />
-          </div>
-        </div>
-
+      <section className="relative py-20 lg:py-28">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
             <div className="max-w-3xl">
@@ -27,10 +20,7 @@ const Research: React.FC = () => {
               </p>
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.015em",
-                }}
+                style={{ letterSpacing: "-0.015em" }}
               >
                 {researchContent.heroTitle}
               </h1>
@@ -54,7 +44,7 @@ const Research: React.FC = () => {
           <FadeInSection>
             <div className="max-w-3xl mx-auto">
               <p
-                className="text-base sm:text-lg leading-relaxed"
+                className="text-lg sm:text-xl leading-relaxed"
                 style={{
                   color: "var(--text-primary)",
                   lineHeight: "1.8",
@@ -96,14 +86,11 @@ const Research: React.FC = () => {
                     >
                       Research Area {index + 1}
                     </p>
-                    <h2
-                      className="text-2xl sm:text-3xl mb-6"
-                      style={{ color: "var(--color-primary)" }}
-                    >
+                    <h2 className="text-2xl sm:text-3xl mb-6">
                       {area.title}
                     </h2>
                     <p
-                      className="text-base leading-relaxed"
+                      className="text-lg leading-relaxed"
                       style={{
                         color: "var(--text-primary)",
                         lineHeight: "1.8",
@@ -114,17 +101,16 @@ const Research: React.FC = () => {
 
                     {/* Structured fields — all text comes from research.ts */}
                     {area.system && (
-                      <div className="mt-6 flex flex-wrap items-center gap-2">
+                      <p className="mt-6 text-base" style={{ color: "var(--text-secondary)" }}>
                         <span
-                          className="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
-                          style={{
-                            backgroundColor: "var(--color-accent)",
-                            color: "var(--color-primary)",
-                          }}
+                          className="text-xs font-medium uppercase tracking-wider"
+                          style={{ color: "var(--text-muted)" }}
                         >
-                          {area.system}
+                          System
                         </span>
-                      </div>
+                        {" — "}
+                        {area.system}
+                      </p>
                     )}
 
                     {(area.centralQuestion ||
@@ -140,7 +126,7 @@ const Research: React.FC = () => {
                               Central question
                             </dt>
                             <dd
-                              className="text-sm leading-relaxed"
+                              className="text-base leading-relaxed"
                               style={{ color: "var(--text-secondary)" }}
                             >
                               {area.centralQuestion}
@@ -156,7 +142,7 @@ const Research: React.FC = () => {
                               Current evidence
                             </dt>
                             <dd
-                              className="text-sm leading-relaxed"
+                              className="text-base leading-relaxed"
                               style={{ color: "var(--text-secondary)" }}
                             >
                               {area.currentEvidence}
@@ -172,7 +158,7 @@ const Research: React.FC = () => {
                               Open question
                             </dt>
                             <dd
-                              className="text-sm leading-relaxed"
+                              className="text-base leading-relaxed"
                               style={{ color: "var(--text-secondary)" }}
                             >
                               {area.openQuestion}
@@ -188,13 +174,7 @@ const Research: React.FC = () => {
                       index % 2 === 1 ? "lg:order-1" : ""
                     }`}
                   >
-                    <div
-                      className="aspect-[4/3] rounded-xl overflow-hidden"
-                      style={{
-                        backgroundColor: "var(--bg-primary)",
-                        border: "1px solid var(--border)",
-                      }}
-                    >
+                    <div className="aspect-[4/3] overflow-hidden">
                       {area.image ? (
                         <img
                           src={area.image}
@@ -236,7 +216,7 @@ const Research: React.FC = () => {
           <FadeInSection>
             <div className="max-w-3xl mx-auto text-center">
               <p
-                className="text-base sm:text-lg leading-relaxed"
+                className="text-lg sm:text-xl leading-relaxed"
                 style={{
                   color: "var(--text-primary)",
                   lineHeight: "1.8",
