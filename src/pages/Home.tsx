@@ -220,7 +220,12 @@ const Home: React.FC = () => {
                   to="/people"
                   className="group block text-center no-underline"
                 >
-                  <AvatarFallback image={person.image} name={person.name} size={80} />
+                  <AvatarFallback
+                    image={person.image}
+                    name={person.name}
+                    size={80}
+                    className="mx-auto mb-3"
+                  />
                   <h3
                     className="text-base font-medium mb-0.5"
                     style={{ color: "var(--text-primary)" }}

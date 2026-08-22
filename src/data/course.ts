@@ -30,7 +30,7 @@ export const course = {
   website: "", // fill in when available, e.g. "https://..."
   lecturers: [
     { name: "Yifan Yang", email: "yangyifan@westlake.edu.cn" },
-    { name: "Poyi Ho", email: "poyiho@westlake.edu.cn" },
+    { name: "Po-Yi Ho", email: "poyiho@westlake.edu.cn" },
   ],
   tas: [
     { name: "Yihao Lin", email: "linyihao@westlake.edu.cn", note: "2026 Fall" },
@@ -48,12 +48,6 @@ export const course = {
     {
       label: "Doctoral Course Syllabus — Part B (PDF)",
       file: "/course_file/Doctoral_Course_Syllabus_Qbio (B).pdf",
-    },
-  ],
-  materials: [
-    {
-      label: "test file",
-      file: "/course_file/course_material/Sizes and Concentrations gallery.pptx",
     },
   ],
   lectures: [

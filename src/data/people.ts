@@ -26,7 +26,7 @@ export const people: Person[] = [
     nameCn: "徐锦建",
     role: "assistant",
     roleLabel: "Assistant Research Fellow",
-    image: "/images/team/jinjian-headshot.jpg",
+    image: "/images/team/jinjian-headshot.webp",
     bio: "Dr Jinjian Xu obtained his PhD in Epidemiology and Health Statistics from Sun Yat‑sen University in 2024. He completed his postdoctoral research at Zhejiang Provincial People’s Hospital from 2024 to 2026, where he advanced the development and translational application of intelligent assessment and risk‑management systems for ageing‑related diseases. Appointed as an Assistant Research Fellow in the Yang Lab at the Centre for Interdisciplinary Science in 2026, he conducts cross‑disciplinary work combining damage‑dynamics mathematical models with multi‑omics data to connect molecular‑level alterations to organ‑level physiological states. Drawing on population‑cohort multi‑omics big data and artificial‑intelligence algorithms, his research explores pathogenic mechanisms, intervention targets and novel biomarkers for ageing‑associated chronic conditions such as metabolic disorders and cognitive decline.\n\nHe applies bioinformatic tools to profile gut microbiomes in older Chinese populations, dissect microbe‑host interactions governing ageing and metabolic phenotypes, and develops omics clocks and biomarkers to track biological age, forecast health trajectories and clarify their fundamental biological underpinnings.",
   },
   {
@@ -75,7 +75,7 @@ export const people: Person[] = [
     nameCn: "刘兰凝",
     role: "staff",
     roleLabel: "Administrative Assistant",
-    image: "/images/team/lanning-headshot.jpg",
+    image: "/images/team/lanning-headshot.webp",
     email: "liulanning@westlake.edu.cn",
     bio: "Lanning studied Health Economics at Paris V. She has two Border Collies. In her personal time, she enjoys exploring the natural world with her dogs and discovering its beauty.",
   },
@@ -95,7 +95,7 @@ export const people: Person[] = [
     nameCn: "向薇蓉",
     role: "visitor",
     roleLabel: "Visiting Student",
-    image: "/images/team/weirong-headshot.jpg",
+    image: "/images/team/weirong-headshot.webp",
     bio: "WeiRong studied Marine Science at Sun Yat-sen University and Biochemistry at Fudan University. Outside the lab, I'm into rock 'n' roll and live music.",
   },
 ];

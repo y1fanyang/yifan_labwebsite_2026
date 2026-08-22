@@ -74,16 +74,6 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm no-underline transition-colors hover:opacity-80"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Google Scholar
-                  <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://www.westlake.edu.cn"
                   target="_blank"
                   rel="noopener noreferrer"

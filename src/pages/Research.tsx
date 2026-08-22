@@ -1,8 +1,130 @@
-import React from "react";
+import React, { useState } from "react";
 import { researchContent } from "@/data/research";
+import type { ResearchArea } from "@/data/research";
 import FadeInSection from "@/components/FadeInSection";
 
 import { ResearchCycle } from "@/components/ResearchCycle";
+
+const ResearchAreaBlock: React.FC<{ area: ResearchArea; index: number }> = ({
+  area,
+  index,
+}) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const showImage = !!area.image && !imgFailed;
+
+  return (
+    <FadeInSection key={area.id}>
+      <div
+        className={`grid gap-10 lg:gap-16 items-center ${
+          showImage ? "lg:grid-cols-2" : "grid-cols-1"
+        }`}
+      >
+        <div className={index % 2 === 1 && showImage ? "lg:order-2" : ""}>
+          <p
+            className="text-xs font-medium uppercase tracking-widest mb-3"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Research Area {index + 1}
+          </p>
+          <h2 className="text-2xl sm:text-3xl mb-6">
+            {area.title}
+          </h2>
+          <p
+            className="text-lg leading-relaxed"
+            style={{
+              color: "var(--text-primary)",
+              lineHeight: "1.8",
+            }}
+          >
+            {area.description}
+          </p>
+
+          {/* Structured fields — all text comes from research.ts */}
+          {area.system && (
+            <p className="mt-6 text-base" style={{ color: "var(--text-secondary)" }}>
+              <span
+                className="text-xs font-medium uppercase tracking-wider"
+                style={{ color: "var(--text-muted)" }}
+              >
+                System
+              </span>
+              {" — "}
+              {area.system}
+            </p>
+          )}
+
+          {(area.centralQuestion ||
+            area.currentEvidence ||
+            area.openQuestion) && (
+            <dl className="mt-6 space-y-4">
+              {area.centralQuestion && (
+                <div>
+                  <dt
+                    className="text-xs font-medium uppercase tracking-wide mb-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Central question
+                  </dt>
+                  <dd
+                    className="text-base leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {area.centralQuestion}
+                  </dd>
+                </div>
+              )}
+              {area.currentEvidence && (
+                <div>
+                  <dt
+                    className="text-xs font-medium uppercase tracking-wide mb-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Current evidence
+                  </dt>
+                  <dd
+                    className="text-base leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {area.currentEvidence}
+                  </dd>
+                </div>
+              )}
+              {area.openQuestion && (
+                <div>
+                  <dt
+                    className="text-xs font-medium uppercase tracking-wide mb-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Open question
+                  </dt>
+                  <dd
+                    className="text-base leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {area.openQuestion}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          )}
+        </div>
+
+        {showImage && (
+          <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
+                src={area.image}
+                alt={area.title}
+                className="w-full h-full object-cover"
+                onError={() => setImgFailed(true)}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </FadeInSection>
+  );
+};
 
 const Research: React.FC = () => {
   return (
@@ -56,7 +178,7 @@ const Research: React.FC = () => {
           </FadeInSection>
         </div>
       </section>
-  	
+
       {/* Research approach */}
       <section
         className="py-20 lg:py-28"
@@ -77,131 +199,7 @@ const Research: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="space-y-20 lg:space-y-28">
             {researchContent.areas.map((area, index) => (
-              <FadeInSection key={area.id}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                    <p
-                      className="text-xs font-medium uppercase tracking-widest mb-3"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      Research Area {index + 1}
-                    </p>
-                    <h2 className="text-2xl sm:text-3xl mb-6">
-                      {area.title}
-                    </h2>
-                    <p
-                      className="text-lg leading-relaxed"
-                      style={{
-                        color: "var(--text-primary)",
-                        lineHeight: "1.8",
-                      }}
-                    >
-                      {area.description}
-                    </p>
-
-                    {/* Structured fields — all text comes from research.ts */}
-                    {area.system && (
-                      <p className="mt-6 text-base" style={{ color: "var(--text-secondary)" }}>
-                        <span
-                          className="text-xs font-medium uppercase tracking-wider"
-                          style={{ color: "var(--text-muted)" }}
-                        >
-                          System
-                        </span>
-                        {" — "}
-                        {area.system}
-                      </p>
-                    )}
-
-                    {(area.centralQuestion ||
-                      area.currentEvidence ||
-                      area.openQuestion) && (
-                      <dl className="mt-6 space-y-4">
-                        {area.centralQuestion && (
-                          <div>
-                            <dt
-                              className="text-xs font-medium uppercase tracking-wide mb-1"
-                              style={{ color: "var(--text-muted)" }}
-                            >
-                              Central question
-                            </dt>
-                            <dd
-                              className="text-base leading-relaxed"
-                              style={{ color: "var(--text-secondary)" }}
-                            >
-                              {area.centralQuestion}
-                            </dd>
-                          </div>
-                        )}
-                        {area.currentEvidence && (
-                          <div>
-                            <dt
-                              className="text-xs font-medium uppercase tracking-wide mb-1"
-                              style={{ color: "var(--text-muted)" }}
-                            >
-                              Current evidence
-                            </dt>
-                            <dd
-                              className="text-base leading-relaxed"
-                              style={{ color: "var(--text-secondary)" }}
-                            >
-                              {area.currentEvidence}
-                            </dd>
-                          </div>
-                        )}
-                        {area.openQuestion && (
-                          <div>
-                            <dt
-                              className="text-xs font-medium uppercase tracking-wide mb-1"
-                              style={{ color: "var(--text-muted)" }}
-                            >
-                              Open question
-                            </dt>
-                            <dd
-                              className="text-base leading-relaxed"
-                              style={{ color: "var(--text-secondary)" }}
-                            >
-                              {area.openQuestion}
-                            </dd>
-                          </div>
-                        )}
-                      </dl>
-                    )}
-                  </div>
-
-                  <div
-                    className={`relative ${
-                      index % 2 === 1 ? "lg:order-1" : ""
-                    }`}
-                  >
-                    <div className="aspect-[4/3] overflow-hidden">
-                      {area.image ? (
-                        <img
-                          src={area.image}
-                          alt={area.title}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const t = e.target as HTMLImageElement;
-                            t.style.display = "none";
-                          }}
-                        />
-                      ) : (
-                        <div
-                          className="w-full h-full flex items-center justify-center"
-                          style={{ backgroundColor: "var(--color-accent)" }}
-                        >
-                          <span
-                            className="text-sm font-medium"
-                            style={{ color: "var(--color-primary)" }}
-                          >
-                            {area.title}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </FadeInSection>
+              <ResearchAreaBlock key={area.id} area={area} index={index} />
             ))}
           </div>
         </div>

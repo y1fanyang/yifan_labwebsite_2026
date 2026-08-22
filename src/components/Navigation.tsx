@@ -34,7 +34,7 @@ const Navigation: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -62,7 +62,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -79,7 +79,7 @@ const Navigation: React.FC = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div
-          className="md:hidden border-t"
+          className="lg:hidden border-t"
           style={{
             backgroundColor: "var(--bg-primary)",
             borderColor: "var(--border)",

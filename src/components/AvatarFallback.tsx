@@ -45,6 +45,8 @@ const AvatarFallback: React.FC<AvatarFallbackProps> = ({
       <img
         src={image}
         alt={name}
+        loading="lazy"
+        decoding="async"
         className="w-full h-full object-cover"
         onError={() => setFailed(true)}
       />

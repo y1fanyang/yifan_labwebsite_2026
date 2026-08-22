@@ -1,7 +1,6 @@
 import React from "react";
 import FadeInSection from "@/components/FadeInSection";
 import {
-  BookOpen,
   GraduationCap,
   FileText,
   CalendarDays,
@@ -40,9 +39,9 @@ const MetaRow: React.FC<{
       {icon}
       {label}
     </span>
-    <span className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+    <div className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
       {children}
-    </span>
+    </div>
   </div>
 );
 
@@ -93,8 +92,6 @@ const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
 );
 
 const Teaching: React.FC = () => {
-  const website = course.website || "TBA";
-
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
@@ -149,10 +146,12 @@ const Teaching: React.FC = () => {
                 <MetaRow icon={<MapPin size={14} />} label="Location">
                   {course.location}
                 </MetaRow>
-                <MetaRow icon={<Globe size={14} />} label="Website">
-                  {website}
-                </MetaRow>
-                <MetaRow icon={<Users size={14} />} label="Lecturer">
+                {course.website && (
+                  <MetaRow icon={<Globe size={14} />} label="Website">
+                    {course.website}
+                  </MetaRow>
+                )}
+                <MetaRow icon={<Users size={14} />} label="Lecturers">
                   <PersonList people={course.lecturers} />
                 </MetaRow>
                 <MetaRow icon={<GraduationCap size={14} />} label="TAs">
@@ -219,26 +218,15 @@ const Teaching: React.FC = () => {
         </div>
       </section>
 
-      {/* Course Material */}
+      {/* Course Schedule */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHeader
-            icon={<BookOpen size={20} />}
-            title="Downloadable materials"
+            icon={<ListChecks size={20} />}
+            title="Course Schedule"
           />
 
-          {/* Downloadable materials */}
           <FadeInSection delay={0.1}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {course.materials.map((item) => (
-                <DownloadRow key={item.file} item={item} />
-              ))}
-            </div>
-          </FadeInSection>
-
-          {/* Lectures */}
-          <FadeInSection delay={0.15}>
-            <h3 className="text-base mt-10 mb-2">Lecture Notes</h3>
             <div>
               {course.lectures.map((lecture, i) => (
                 <div
@@ -257,7 +245,7 @@ const Teaching: React.FC = () => {
                   >
                     {lecture.title}
                   </span>
-                  {lecture.file ? (
+                  {lecture.file && (
                     <a
                       href={lecture.file}
                       download
@@ -268,62 +256,48 @@ const Teaching: React.FC = () => {
                         style={{ color: "var(--color-secondary)" }}
                       />
                     </a>
-                  ) : (
-                    <span
-                      className="text-xs shrink-0"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      coming soon
-                    </span>
                   )}
                 </div>
               ))}
             </div>
           </FadeInSection>
 
-          {/* Problem Sets (separate, after all lectures) */}
-          <FadeInSection delay={0.2}>
-            <h3
-              className="flex items-center gap-2 text-base mt-10 mb-2"
-            >
-              <ListChecks size={16} style={{ color: "var(--color-secondary)" }} />
-              Problem Sets
-            </h3>
-            <div>
-              {course.problemSets.map((ps, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 py-3"
-                >
-                  <span
-                    className="text-base flex-1 leading-relaxed"
-                    style={{ color: "var(--text-primary)" }}
+          {/* Problem Sets — hidden until files exist */}
+          {course.problemSets.some((ps) => ps.file) && (
+            <FadeInSection delay={0.15}>
+              <h3 className="flex items-center gap-2 text-base mt-10 mb-2">
+                <ListChecks size={16} style={{ color: "var(--color-secondary)" }} />
+                Problem Sets
+              </h3>
+              <div>
+                {course.problemSets.map((ps, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 py-3"
                   >
-                    {ps.title}
-                  </span>
-                  {ps.file ? (
-                    <a
-                      href={ps.file}
-                      download
-                      className="no-underline hover:opacity-80"
-                    >
-                      <Download
-                        size={15}
-                        style={{ color: "var(--color-secondary)" }}
-                      />
-                    </a>
-                  ) : (
                     <span
-                      className="text-xs shrink-0"
-                      style={{ color: "var(--text-muted)" }}
+                      className="text-base flex-1 leading-relaxed"
+                      style={{ color: "var(--text-primary)" }}
                     >
-                      coming soon
+                      {ps.title}
                     </span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </FadeInSection>
+                    {ps.file && (
+                      <a
+                        href={ps.file}
+                        download
+                        className="no-underline hover:opacity-80"
+                      >
+                        <Download
+                          size={15}
+                          style={{ color: "var(--color-secondary)" }}
+                        />
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </FadeInSection>
+          )}
         </div>
       </section>
     </div>

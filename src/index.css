@@ -10,7 +10,7 @@
 :root {
   /* Typography */
   --font-display: "Ysabeau", "Optima", sans-serif;
-  --font-body: "Source Sans 3", "Source Han Sans SC", sans-serif;
+  --font-body: "Source Sans 3", "Noto Sans SC", "Source Han Sans SC", sans-serif;
 
   --bg-primary: #FFFFFF;
   --bg-hero: #FFFFFF;
@@ -19,8 +19,8 @@
   --color-secondary: #0A3289;
   --color-accent: #E8F1F7;
   --text-primary: #00283C;
-  --text-secondary: #6F8490;
-  --text-muted: #8A9BA6;
+  --text-secondary: #607783;
+  --text-muted: #5F7480;
   --border: #E6EAEC;
 
   /* shadcn compatibility */
