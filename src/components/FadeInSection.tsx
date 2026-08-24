@@ -14,7 +14,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({
   className = "",
   delay = 0,
   direction = "up",
-  duration = 0.6,
+  duration = 0.5,
   threshold = 0.1,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,15 +23,15 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({
   const getInitialTransform = () => {
     switch (direction) {
       case "up":
-        return "translateY(20px)";
+        return "translateY(8px)";
       case "down":
-        return "translateY(-20px)";
+        return "translateY(-8px)";
       case "left":
-        return "translateX(20px)";
+        return "translateX(8px)";
       case "right":
-        return "translateX(-20px)";
+        return "translateX(-8px)";
       default:
-        return "translateY(20px)";
+        return "translateY(8px)";
     }
   };
 

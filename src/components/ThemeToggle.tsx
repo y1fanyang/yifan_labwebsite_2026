@@ -8,9 +8,9 @@ const ThemeToggle: React.FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`relative flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ${className}`}
+      className={`relative flex items-center justify-center w-9 h-9 rounded-full transition-opacity duration-200 hover:opacity-70 ${className}`}
       style={{
-        backgroundColor: "var(--color-accent)",
+        backgroundColor: "transparent",
         border: "none",
         cursor: "pointer",
       }}
@@ -27,9 +27,9 @@ const ThemeToggle: React.FC<{ className?: string }> = ({ className = "" }) => {
         }}
       >
         {isDark ? (
-          <Moon size={16} style={{ color: "var(--color-primary)" }} />
+          <Moon size={16} style={{ color: "var(--text-secondary)" }} />
         ) : (
-          <Sun size={16} style={{ color: "var(--color-primary)" }} />
+          <Sun size={16} style={{ color: "var(--text-secondary)" }} />
         )}
       </div>
     </button>

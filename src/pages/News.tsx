@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import FadeInSection from "@/components/FadeInSection";
-import SurvivalCurve from "@/components/SurvivalCurve";
 import { Calendar, MapPin, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 interface NewsItem {
@@ -116,13 +115,7 @@ const News: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-24 opacity-60">
-            <SurvivalCurve variant="divider" className="w-full h-full" />
-          </div>
-        </div>
-
+      <section className="relative py-20 lg:py-28">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <FadeInSection>
             <div className="max-w-3xl">
@@ -133,11 +126,8 @@ const News: React.FC = () => {
                 Updates
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
-                }}
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
+                style={{ letterSpacing: "-0.015em" }}
               >
                 News
               </h1>
@@ -159,22 +149,23 @@ const News: React.FC = () => {
             {newsItems.map((item, itemIndex) => (
               <FadeInSection key={item.id} delay={itemIndex * 0.1}>
                 <article
-                  className="rounded-2xl overflow-hidden"
-                  style={{
-                    backgroundColor: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                  }}
+                  className="pb-12 border-b last:border-0 last:pb-0"
+                  style={{ borderColor: "var(--border)" }}
                 >
                   {/* Header */}
-                  <div className="p-6 lg:p-8 pb-4">
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3">
                       <span
-                        className="text-xs font-medium px-2.5 py-1 rounded-full"
-                        style={{
-                          backgroundColor: "var(--color-accent)",
-                          color: typeLabels[item.type]?.color || "var(--color-primary)",
-                        }}
+                        className="flex items-center gap-1.5 text-xs uppercase tracking-wider"
+                        style={{ color: "var(--text-muted)" }}
                       >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{
+                            backgroundColor:
+                              typeLabels[item.type]?.color || "var(--color-primary)",
+                          }}
+                        />
                         {typeLabels[item.type]?.label || item.type}
                       </span>
                       <span
@@ -192,14 +183,9 @@ const News: React.FC = () => {
                         {item.location}
                       </span>
                     </div>
-                    <h2
-                      className="text-xl lg:text-2xl font-bold mb-3"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {item.title}
-                    </h2>
+                    <h2 className="text-xl lg:text-2xl mb-3">{item.title}</h2>
                     <p
-                      className="text-base leading-relaxed"
+                      className="text-lg leading-relaxed"
                       style={{ color: "var(--text-secondary)" }}
                     >
                       {item.description}
@@ -208,7 +194,7 @@ const News: React.FC = () => {
 
                   {/* Image Grid */}
                   {item.images.length > 0 && (
-                    <div className="px-6 lg:px-8 pb-6 lg:pb-8">
+                    <div className="mt-6">
                       <div
                         className={`grid gap-3 ${
                           item.images.length === 1
@@ -226,7 +212,7 @@ const News: React.FC = () => {
                             onClick={() =>
                               setGallery({ images: item.images, index: imgIndex })
                             }
-                            className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer"
+                            className="relative aspect-[4/3] overflow-hidden group cursor-pointer"
                             style={{
                               backgroundColor: "var(--bg-primary)",
                             }}
@@ -234,7 +220,7 @@ const News: React.FC = () => {
                             <img
                               src={img}
                               alt={`${item.title} - photo ${imgIndex + 1}`}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />

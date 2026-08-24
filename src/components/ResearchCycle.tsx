@@ -22,12 +22,7 @@ export function ResearchCycle({
             How We Work
           </p>
 
-          <h2
-            className="text-2xl sm:text-3xl font-bold mb-4"
-            style={{ color: "var(--color-primary)" }}
-          >
-            {title}
-          </h2>
+          <h2 className="text-2xl sm:text-3xl mb-4">{title}</h2>
 
           <p
             className="text-base leading-relaxed"
@@ -37,20 +32,11 @@ export function ResearchCycle({
           </p>
         </div>
 
-        {/* items-stretch + nowrap so all chips share equal width AND height */}
-        <div className="flex flex-col md:flex-row items-stretch justify-center gap-3">
+        {/* Number + label + arrow flow, no boxes */}
+        <div className="flex flex-col md:flex-row items-stretch justify-center gap-3 md:gap-4">
           {steps.map((step, index) => (
-            <div
-              key={step.id}
-              className="contents"
-            >
-              <div
-                className="flex-1 min-w-0 rounded-lg px-4 py-4 text-center"
-                style={{
-                  backgroundColor: "var(--bg-primary)",
-                  border: "1px solid var(--border)",
-                }}
-              >
+            <div key={step.id} className="contents">
+              <div className="flex-1 min-w-0 text-center">
                 <span
                   className="block text-xs font-medium mb-1"
                   style={{ color: "var(--text-muted)" }}
@@ -59,7 +45,7 @@ export function ResearchCycle({
                 </span>
 
                 <span
-                  className="text-sm font-semibold"
+                  className="text-base"
                   style={{ color: "var(--text-primary)" }}
                 >
                   {step.title}
@@ -68,7 +54,7 @@ export function ResearchCycle({
 
               {index < steps.length - 1 && (
                 <ArrowRight
-                  size={18}
+                  size={16}
                   aria-hidden="true"
                   className="hidden md:block shrink-0 self-center"
                   style={{ color: "var(--color-secondary)" }}
@@ -78,10 +64,41 @@ export function ResearchCycle({
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        {/* U-shaped return: risers from under the outer edges of the 1st/5th
+            step text down to a bottom rail that spans exactly between them,
+            a single static arrow back (5 -> 1) */}
+        <div
+          className="relative mt-4 h-10 hidden md:block"
+          aria-hidden="true"
+        >
+          <div
+            className="absolute right-[4%] top-0 bottom-0 w-px"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+          <div
+            className="absolute left-[4%] right-[4%] bottom-0 h-px"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+          <div
+            className="absolute left-[4%] top-0 bottom-0 w-px"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+          <ArrowLeft
+            size={16}
+            style={{
+              position: "absolute",
+              left: "50%",
+              bottom: "-8px",
+              transform: "translateX(-50%)",
+              color: "var(--color-secondary)",
+            }}
+          />
+        </div>
+
+        <div className="mt-6 text-center">
           <Link
             to="/research"
-            className="inline-flex items-center gap-2 text-sm font-medium no-underline"
+            className="inline-flex items-center gap-1.5 text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-70"
             style={{ color: "var(--color-secondary)" }}
           >
             Explore our research approach
@@ -102,12 +119,7 @@ export function ResearchCycle({
           Research Approach
         </p>
 
-        <h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5"
-          style={{ color: "var(--color-primary)" }}
-        >
-          {title}
-        </h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-5">{title}</h2>
 
         <p
           className="text-base sm:text-lg leading-relaxed"
@@ -117,34 +129,24 @@ export function ResearchCycle({
         </p>
       </div>
 
-      {/* Desktop: a row of 5 cards. The last loops back to the first via a
-          return bar, and a brighter pulse travels along the arrows
-          (-> -> -> -> then <- back) roughly every 3s. */}
+      {/* Desktop: a row of 5 steps connected by static arrows. The last
+          loops back to the first through a U-shaped polyline (right riser
+          down, bottom rail back left, left riser up); a single static
+          ArrowLeft marker on the rail shows the return direction. */}
       <div className="hidden lg:block">
-        <div className="flex items-stretch justify-center gap-3">
+        <div className="flex items-stretch justify-center gap-3 lg:gap-6">
           {steps.map((step, i) => (
             <div key={step.id} className="contents">
-              <article
-                className="flex-1 min-w-0 flex flex-col rounded-xl p-5"
-                style={{
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                }}
-              >
+              <article className="flex-1 min-w-0 flex flex-col">
                 <span
-                  className="text-sm font-semibold mb-1"
-                  style={{ color: "var(--color-secondary)" }}
+                  className="text-xs font-medium mb-2"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   {step.number}
                 </span>
-                <h3
-                  className="text-lg font-semibold mb-2 leading-snug"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {step.title}
-                </h3>
+                <h3 className="text-lg mb-2 leading-snug">{step.title}</h3>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-base leading-relaxed"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   {step.description}
@@ -153,46 +155,52 @@ export function ResearchCycle({
 
               {i < steps.length - 1 && (
                 <ArrowRight
-                  size={22}
+                  size={20}
                   aria-hidden="true"
-                  className="cycle-arrow shrink-0 self-center"
-                  style={{ animationDelay: `${i * 0.9}s` }}
+                  className="shrink-0 self-center"
+                  style={{ color: "var(--color-secondary)" }}
                 />
               )}
             </div>
           ))}
         </div>
 
-        {/* Return path: a U-shape (Perturbation -> Data). An arrow glides along
-            the bottom line (right -> left) to convey the loop. */}
-        <div className="relative mt-3 h-12">
+        {/* U-shaped return path (5 -> 1): risers aligned to the outer edges
+            of the first/last column text, rail spanning exactly between them */}
+        <div className="relative mt-6 h-12">
           <div
-            className="absolute inset-0"
-            style={{
-              borderLeft: "2px dashed var(--border)",
-              borderRight: "2px dashed var(--border)",
-              borderBottom: "2px dashed var(--border)",
-            }}
+            className="absolute right-0 top-0 bottom-0 w-px"
+            style={{ backgroundColor: "var(--border)" }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-px"
+            style={{ backgroundColor: "var(--border)" }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute left-0 top-0 bottom-0 w-px"
+            style={{ backgroundColor: "var(--border)" }}
             aria-hidden="true"
           />
 
-          {/* "Cycle repeats" sits just above the bottom line */}
+          {/* "Cycle repeats" sits just above the return rail */}
           <span
-            className="absolute bottom-1 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-2 text-xs font-medium uppercase tracking-widest"
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-2 text-xs font-medium uppercase tracking-widest"
             style={{ color: "var(--text-muted)" }}
           >
             <RotateCw size={12} aria-hidden="true" />
             Cycle repeats
           </span>
 
-          {/* Sliding arrow along the bottom line (right -> left) */}
+          {/* Single static arrow centered on the return rail (pointing back to 1) */}
           <ArrowLeft
-            size={18}
+            size={20}
             aria-hidden="true"
-            className="cycle-slide"
             style={{
               position: "absolute",
-              bottom: "-9px",
+              left: "50%",
+              bottom: "-10px",
               transform: "translateX(-50%)",
               color: "var(--color-secondary)",
             }}
@@ -205,27 +213,16 @@ export function ResearchCycle({
         <div className="mx-auto max-w-md">
           {steps.map((step, i) => (
             <div key={step.id}>
-              <article
-                className="rounded-xl p-5"
-                style={{
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                }}
-              >
+              <article>
                 <span
-                  className="block text-xs font-semibold mb-1"
-                  style={{ color: "var(--color-secondary)" }}
+                  className="block text-xs font-medium mb-1"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   {step.number}
                 </span>
-                <h3
-                  className="text-base font-semibold mb-2"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {step.title}
-                </h3>
+                <h3 className="text-base mb-2">{step.title}</h3>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-base leading-relaxed"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   {step.description}
@@ -233,7 +230,7 @@ export function ResearchCycle({
               </article>
 
               {i < steps.length - 1 && (
-                <div className="flex justify-center py-2" aria-hidden="true">
+                <div className="flex justify-center py-3" aria-hidden="true">
                   <ArrowDown
                     size={18}
                     style={{ color: "var(--text-muted)" }}
@@ -243,18 +240,15 @@ export function ResearchCycle({
             </div>
           ))}
 
-          <div
-            className="mt-4 flex items-center justify-center gap-2 rounded-lg p-3 text-center text-sm font-medium"
-            style={{
-              backgroundColor: "var(--color-accent)",
-              color: "var(--color-primary)",
-            }}
+          <p
+            className="mt-6 flex items-center justify-center gap-2 text-center text-base"
+            style={{ color: "var(--text-muted)" }}
           >
-            <RotateCw size={16} aria-hidden="true" />
+            <RotateCw size={14} aria-hidden="true" />
             <span>
               Perturbation generates new data — the cycle begins again.
             </span>
-          </div>
+          </p>
         </div>
       </div>
     </div>

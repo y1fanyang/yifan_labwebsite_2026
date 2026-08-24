@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, MapPin, FlaskConical, ArrowRight } from "lucide-react";
+import { Mail, MapPin, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import FadeInSection from "@/components/FadeInSection";
 
@@ -18,11 +18,8 @@ const Contact: React.FC = () => {
                 Get in Touch
               </p>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
-                style={{
-                  color: "var(--color-primary)",
-                  letterSpacing: "-0.02em",
-                }}
+                className="text-3xl sm:text-4xl lg:text-5xl mb-6"
+                style={{ letterSpacing: "-0.015em" }}
               >
                 Contact Us
               </h1>
@@ -43,37 +40,20 @@ const Contact: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FadeInSection>
-              <div
-                className="p-8 rounded-xl h-full"
-                style={{
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
-                  style={{
-                    backgroundColor: "var(--color-accent)",
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  <Mail size={20} />
+              <div className="h-full">
+                <div className="flex items-center gap-2 mb-2">
+                  <Mail size={16} style={{ color: "var(--color-secondary)" }} />
+                  <h3 className="text-lg">Email</h3>
                 </div>
-                <h3
-                  className="text-lg font-semibold mb-3"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Email
-                </h3>
                 <p
-                  className="text-sm mb-4"
+                  className="text-base mb-3"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   For general inquiries and collaboration opportunities:
                 </p>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-base font-medium no-underline transition-colors duration-200 hover:opacity-80"
+                  className="text-lg font-medium no-underline transition-opacity duration-200 hover:opacity-70"
                   style={{ color: "var(--color-secondary)" }}
                 >
                   {siteConfig.email}
@@ -82,36 +62,19 @@ const Contact: React.FC = () => {
             </FadeInSection>
 
             <FadeInSection delay={0.1}>
-              <div
-                className="p-8 rounded-xl h-full"
-                style={{
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
-                  style={{
-                    backgroundColor: "var(--color-accent)",
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  <MapPin size={20} />
+              <div className="h-full">
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin size={16} style={{ color: "var(--color-secondary)" }} />
+                  <h3 className="text-lg">Location</h3>
                 </div>
-                <h3
-                  className="text-lg font-semibold mb-3"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Location
-                </h3>
                 <p
-                  className="text-sm mb-4"
+                  className="text-base mb-3"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   Visit us at:
                 </p>
                 <p
-                  className="text-base font-medium"
+                  className="text-lg font-medium"
                   style={{ color: "var(--text-primary)" }}
                 >
                   {siteConfig.address}
@@ -130,23 +93,11 @@ const Contact: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 lg:px-12">
           <FadeInSection>
             <div className="text-center mb-12">
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-                style={{
-                  backgroundColor: "var(--color-accent)",
-                  color: "var(--color-primary)",
-                }}
-              >
-                <FlaskConical size={28} />
-              </div>
-              <h2
-                className="text-2xl sm:text-3xl font-bold mb-4"
-                style={{ color: "var(--color-primary)" }}
-              >
+              <h2 className="text-2xl sm:text-3xl mb-4">
                 Join the Lab
               </h2>
               <p
-                className="text-base leading-relaxed max-w-2xl mx-auto"
+                className="text-lg leading-relaxed max-w-2xl mx-auto"
                 style={{ color: "var(--text-secondary)" }}
               >
                 We are always looking for motivated researchers at all levels —
@@ -158,7 +109,7 @@ const Contact: React.FC = () => {
           </FadeInSection>
 
           <FadeInSection delay={0.1}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
               {[
                 {
                   title: "PhD Positions",
@@ -176,22 +127,15 @@ const Contact: React.FC = () => {
                     "We occasionally have openings for research assistants. Check back or send an open application.",
                 },
               ].map((item) => (
-                <div
-                  key={item.title}
-                  className="p-6 rounded-lg text-center"
-                  style={{
-                    backgroundColor: "var(--bg-primary)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
+                <div key={item.title}>
                   <h3
-                    className="text-base font-semibold mb-3"
+                    className="text-base mb-2"
                     style={{ color: "var(--text-primary)" }}
                   >
                     {item.title}
                   </h3>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-base leading-relaxed"
                     style={{ color: "var(--text-secondary)" }}
                   >
                     {item.description}
@@ -202,17 +146,14 @@ const Contact: React.FC = () => {
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <div className="mt-10 text-center">
+            <div className="mt-12 text-center">
               <a
                 href={`mailto:${siteConfig.email}?subject=Lab Position Inquiry`}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-medium no-underline transition-all duration-250 hover:-translate-y-0.5"
-                style={{
-                  backgroundColor: "var(--color-primary)",
-                  color: "var(--bg-primary)",
-                }}
+                className="inline-flex items-center gap-1.5 text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-70"
+                style={{ color: "var(--color-primary)" }}
               >
                 Send Inquiry
-                <ArrowRight size={14} />
+                <ArrowRight size={13} />
               </a>
             </div>
           </FadeInSection>
