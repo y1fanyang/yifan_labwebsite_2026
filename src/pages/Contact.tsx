@@ -1,6 +1,7 @@
 import React from "react";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { obfuscateEmail } from "@/lib/utils";
 import FadeInSection from "@/components/FadeInSection";
 
 const Contact: React.FC = () => {
@@ -56,7 +57,7 @@ const Contact: React.FC = () => {
                   className="text-lg font-medium no-underline transition-opacity duration-200 hover:opacity-70"
                   style={{ color: "var(--color-secondary)" }}
                 >
-                  {siteConfig.email}
+                  {obfuscateEmail(siteConfig.email)}
                 </a>
               </div>
             </FadeInSection>

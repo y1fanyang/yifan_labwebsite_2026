@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { course } from "@/data/course";
 import type { DownloadItem, CoursePerson } from "@/data/course";
+import { obfuscateEmail } from "@/lib/utils";
 
 const SectionHeader: React.FC<{
   icon: React.ReactNode;
@@ -53,7 +54,7 @@ const PersonList: React.FC<{ people: CoursePerson[] }> = ({ people }) => (
         {p.email && (
           <span style={{ color: "var(--text-muted)" }}>
             {" "}
-            ({p.email})
+            ({obfuscateEmail(p.email)})
           </span>
         )}
         {p.note && (

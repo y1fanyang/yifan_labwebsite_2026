@@ -15,6 +15,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { obfuscateEmail } from "@/lib/utils";
 
 interface PersonCardProps {
   name: string;
@@ -157,13 +158,13 @@ const PersonCard: React.FC<PersonCardProps> = ({
                       className="min-w-0 flex-1 break-all text-sm font-medium"
                       style={{ color: "var(--text-primary)" }}
                     >
-                      {email}
+                      {obfuscateEmail(email)}
                     </span>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleCopyEmail}
-                      aria-label={`Copy ${email} to clipboard`}
+                      aria-label={`Copy ${obfuscateEmail(email)} to clipboard`}
                       className="shrink-0"
                     >
                       {copied ? (
@@ -349,7 +350,7 @@ const People: React.FC = () => {
                   style={{ color: "var(--color-secondary)" }}
                 >
                   <Mail size={14} />
-                  {selected.email}
+                  {obfuscateEmail(selected.email)}
                 </a>
               )}
             </>

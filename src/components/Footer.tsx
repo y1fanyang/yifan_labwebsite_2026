@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { siteConfig, navItems } from "@/data/site";
+import { obfuscateEmail } from "@/lib/utils";
 import LabLogos from "./LabLogos";
 
 const Footer: React.FC = () => {
@@ -34,7 +35,7 @@ const Footer: React.FC = () => {
                 style={{ color: "var(--text-secondary)" }}
               >
                 <Mail size={14} />
-                {siteConfig.email}
+                {obfuscateEmail(siteConfig.email)}
               </a>
               <div
                 className="flex items-center gap-2 text-sm"
