@@ -27,6 +27,7 @@ export const course = {
   term: "Fall 2026",
   time: "Tuesday and Friday 13:30-15:55",
   location: "E13-210, Yungu campus",
+  officeHours: "1 hour/week, 10am -11am per Friday, E14-417",
   website: "", // fill in when available, e.g. "https://..."
   lecturers: [
     { name: "Yifan Yang", email: "yangyifan@westlake.edu.cn" },
@@ -51,7 +52,7 @@ export const course = {
     },
   ],
   lectures: [
-    { title: "What are quantitative principles in biology?" },
+    { title: "Lecture_1_Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
     { title: "Nonlinear regulation and solving equations graphically" },
