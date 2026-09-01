@@ -10,6 +10,7 @@ import {
   Users,
   Download,
   ListChecks,
+  Presentation,
 } from "lucide-react";
 import { course } from "@/data/course";
 import type { DownloadItem, CoursePerson } from "@/data/course";
@@ -93,6 +94,11 @@ const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
 );
 
 const Teaching: React.FC = () => {
+  // Slides submodule shows only lectures that have a file attached.
+  const slides = course.lectures
+    .filter((lecture) => lecture.file)
+    .map((lecture) => ({ label: lecture.title, file: lecture.file as string }));
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
@@ -160,6 +166,12 @@ const Teaching: React.FC = () => {
                 </MetaRow>
               </div>
 
+              <div className="mt-6">
+                <MetaRow icon={<Clock size={14} />} label="TA Office hours">
+                  {course.officeHours}
+                </MetaRow>
+              </div>
+
               <div className="mt-6 space-y-4">
                 <div>
                   <p
@@ -198,22 +210,73 @@ const Teaching: React.FC = () => {
         </div>
       </section>
 
-      {/* Course Outline */}
+      {/* Downloadable material */}
       <section
         className="py-16 lg:py-20"
         style={{ backgroundColor: "var(--bg-card)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHeader
-            icon={<FileText size={20} />}
-            title="Syllabus"
+            icon={<Download size={20} />}
+            title="Downloadable material"
           />
 
           <FadeInSection delay={0.1}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {course.outlineFiles.map((item) => (
-                <DownloadRow key={item.file} item={item} />
-              ))}
+            <div className="space-y-10">
+              {/* Syllabus */}
+              <div>
+                <h3 className="flex items-center gap-2 text-base mb-3">
+                  <FileText size={16} style={{ color: "var(--color-secondary)" }} />
+                  Syllabus
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {course.outlineFiles.map((item) => (
+                    <DownloadRow key={item.file} item={item} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Slides */}
+              <div>
+                <h3 className="flex items-center gap-2 text-base mb-3">
+                  <Presentation size={16} style={{ color: "var(--color-secondary)" }} />
+                  Slides
+                </h3>
+                {slides.length > 0 ? (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {slides.map((item) => (
+                      <DownloadRow key={item.file} item={item} />
+                    ))}
+                  </div>
+                ) : (
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Slides will be posted here after each lecture.
+                  </p>
+                )}
+              </div>
+
+              {/* Problem Sets — shown once files exist */}
+              {course.problemSets.some((ps) => ps.file) && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-base mb-3">
+                    <ListChecks size={16} style={{ color: "var(--color-secondary)" }} />
+                    Problem Sets
+                  </h3>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {course.problemSets
+                      .filter((ps) => ps.file)
+                      .map((ps) => (
+                        <DownloadRow
+                          key={ps.title}
+                          item={{ label: ps.title, file: ps.file as string }}
+                        />
+                      ))}
+                  </div>
+                </div>
+              )}
             </div>
           </FadeInSection>
         </div>
@@ -246,59 +309,10 @@ const Teaching: React.FC = () => {
                   >
                     {lecture.title}
                   </span>
-                  {lecture.file && (
-                    <a
-                      href={lecture.file}
-                      download
-                      className="no-underline hover:opacity-80"
-                    >
-                      <Download
-                        size={15}
-                        style={{ color: "var(--color-secondary)" }}
-                      />
-                    </a>
-                  )}
                 </div>
               ))}
             </div>
           </FadeInSection>
-
-          {/* Problem Sets — hidden until files exist */}
-          {course.problemSets.some((ps) => ps.file) && (
-            <FadeInSection delay={0.15}>
-              <h3 className="flex items-center gap-2 text-base mt-10 mb-2">
-                <ListChecks size={16} style={{ color: "var(--color-secondary)" }} />
-                Problem Sets
-              </h3>
-              <div>
-                {course.problemSets.map((ps, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 py-3"
-                  >
-                    <span
-                      className="text-base flex-1 leading-relaxed"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {ps.title}
-                    </span>
-                    {ps.file && (
-                      <a
-                        href={ps.file}
-                        download
-                        className="no-underline hover:opacity-80"
-                      >
-                        <Download
-                          size={15}
-                          style={{ color: "var(--color-secondary)" }}
-                        />
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </FadeInSection>
-          )}
         </div>
       </section>
     </div>
