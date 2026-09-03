@@ -70,7 +70,7 @@ export const course = {
     { title: "Whole-cell modelling, FBA, and coarse-grained descriptions" },
   ] as Lecture[],
   problemSets: [
-    { title: "Problem Set 1" },
+    { title: "Problem Set 1", file: "/course_file/Problem_Set_1.pdf" },
     { title: "Problem Set 2" },
     { title: "Problem Set 3" },
     { title: "Problem Set 4" },
