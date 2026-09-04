@@ -32,6 +32,7 @@
 - **课程 / Teaching 页** → `src/data/course.ts` 里的 `course` 常量：
   - `lectures[]`：某一讲填了 `file`，就会显示在 Downloadable material → **Slides**（可下载）。幻灯片 PDF 放 `public/course_file/`。
   - `problemSets[]`：某一套填了 `file`，就会显示在 → **Problem Sets**。
+  - `lectureNotes[]`：某份笔记填了 `file`，就会显示在 → **Lecture Notes**（Problem Sets 之后）。
   - `outlineFiles[]`：Syllabus 下载。
 - **论文**：正常情况自动从 ORCID 抓取（ORCID ID 见 `publications.ts` 注释，拉取逻辑在 `src/services/*`、`src/hooks/usePublications.ts`）；手补/高亮文章在 `src/data/publications.ts`。
 - **网站口号 / 地址 / 实验室简介 / 联系邮箱** → `src/data/site.ts` 的 `siteConfig`。

@@ -11,6 +11,7 @@ import {
   Download,
   ListChecks,
   Presentation,
+  NotebookText,
 } from "lucide-react";
 import { course } from "@/data/course";
 import type { DownloadItem, CoursePerson } from "@/data/course";
@@ -272,6 +273,29 @@ const Teaching: React.FC = () => {
                         <DownloadRow
                           key={ps.title}
                           item={{ label: ps.title, file: ps.file as string }}
+                        />
+                      ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Lecture Notes — shown once files exist */}
+              {course.lectureNotes.some((note) => note.file) && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-base mb-3">
+                    <NotebookText
+                      size={16}
+                      style={{ color: "var(--color-secondary)" }}
+                    />
+                    Lecture Notes
+                  </h3>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {course.lectureNotes
+                      .filter((note) => note.file)
+                      .map((note) => (
+                        <DownloadRow
+                          key={note.title}
+                          item={{ label: note.title, file: note.file as string }}
                         />
                       ))}
                   </div>

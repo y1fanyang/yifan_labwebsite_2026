@@ -77,6 +77,12 @@ export const course = {
     { title: "Problem Set 5" },
     { title: "Problem Set 6" },
   ] as Lecture[],
+  lectureNotes: [
+    {
+      title: "Lecture_Notes_bionumber_0902",
+      file: "/course_file/Lecture_Notes_bionumber_0902.pdf",
+    },
+  ] as Lecture[],
 };
 
 export type Course = typeof course;
