@@ -52,7 +52,7 @@ export const course = {
     },
   ],
   lectures: [
-    { title: "Lecture_1_Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
+    { title: "Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
     { title: "Nonlinear regulation and solving equations graphically" },
@@ -79,8 +79,12 @@ export const course = {
   ] as Lecture[],
   lectureNotes: [
     {
-      title: "Lecture_Notes_bionumber_0902",
-      file: "/course_file/Lecture_Notes_bionumber_0902.pdf",
+      title: "Intro_to_Quant_Bio_LectureNote_0902",
+      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0902.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_0908",
+      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0908.pdf",
     },
   ] as Lecture[],
 };
