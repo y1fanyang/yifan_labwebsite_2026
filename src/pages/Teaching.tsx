@@ -96,9 +96,13 @@ const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
 
 const Teaching: React.FC = () => {
   // Slides submodule shows only lectures that have a file attached.
+  // Label is decoupled from the Course Schedule title and shows the file name directly.
   const slides = course.lectures
     .filter((lecture) => lecture.file)
-    .map((lecture) => ({ label: lecture.title, file: lecture.file as string }));
+    .map((lecture) => ({
+      label: (lecture.file as string).split("/").pop()!.replace(/\.pdf$/i, ""),
+      file: lecture.file as string,
+    }));
 
   return (
     <div className="min-h-screen pt-16">
