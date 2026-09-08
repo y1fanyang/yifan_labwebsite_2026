@@ -52,7 +52,7 @@ export const course = {
     },
   ],
   lectures: [
-    { title: "Lecture_1_Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
+    { title: "Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
     { title: "Nonlinear regulation and solving equations graphically" },
