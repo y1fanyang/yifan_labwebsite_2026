@@ -30,7 +30,8 @@
 
 - **成员增删 / 照片 / 简介 / 邮箱** → `src/data/people.ts`。每条 Person 含 `id, name, nameCn, role, roleLabel, image, email?, bio`。头像放 `public/images/team/<id>-headshot.jpg|.webp`（id 与数据一致）。新增大图先跑 `scripts/optimize-team-images.mjs` 压缩/转 webp。
 - **课程 / Teaching 页** → `src/data/course.ts` 里的 `course` 常量：
-  - `lectures[]`：某一讲填了 `file`，就会显示在 Downloadable material → **Slides**（可下载）。一讲可以有多个文件，写数组即可（如 Lecture 4 的两份 pptx）。幻灯片放 `public/course_file/slides/`（PDF 或 pptx 都行，列表标签取文件名去掉扩展名）。
+  - `slides[]`：Downloadable material → **Slides**（可下载）。直接列文件路径（PDF 或 pptx 都行），显示名取文件名去掉扩展名；与 Course Schedule 无关，增删只改这一处。文件放 `public/course_file/slides/`。
+  - `lectures[]`：Course Schedule 的课程表，只写 `title`（讲次序号由页面按顺序生成）。
   - `problemSets[]`：某一套填了 `file`，就会显示在 → **Problem Sets**。文件放 `public/course_file/problemset/`。
   - `lectureNotes[]`：某份笔记填了 `file`，就会显示在 → **Lecture Notes**（Problem Sets 之后）。文件放 `public/course_file/lecturenote/`。
   - `outlineFiles[]`：Syllabus 下载。文件放 `public/course_file/syllabus/`。

@@ -99,14 +99,9 @@ const fileName = (filePath: string) =>
   filePath.split("/").pop()!.replace(/\.[^.]+$/, "");
 
 const Teaching: React.FC = () => {
-  // Slides submodule lists every file attached to a lecture, in schedule order.
-  // Label is decoupled from the Course Schedule title and shows the file name directly.
-  const slides = course.lectures
-    .flatMap((lecture) => {
-      const file = lecture.file;
-      return file ? (Array.isArray(file) ? file : [file]) : [];
-    })
-    .map((file) => ({ label: fileName(file), file }));
+  // Slides are a standalone download list, decoupled from the Course Schedule.
+  // Label is the file name with its extension stripped (.pdf, .pptx, ...).
+  const slides = course.slides.map((file) => ({ label: fileName(file), file }));
 
   return (
     <div className="min-h-screen pt-16">

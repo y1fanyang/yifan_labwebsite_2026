@@ -18,9 +18,7 @@ export interface DownloadItem {
 
 export interface Lecture {
   title: string;
-  // Download link(s) — a lecture may have more than one deck attached.
-  // Leave empty until materials are available.
-  file?: string | string[];
+  file?: string; // download link; leave empty until materials are available
 }
 
 export const course = {
@@ -53,17 +51,18 @@ export const course = {
       file: "/course_file/syllabus/Doctoral_Course_Syllabus_Qbio (B).pdf",
     },
   ],
+  // Slide decks, in the order they should appear under Downloadable material.
+  // Independent of the Course Schedule; the page labels each with its file name.
+  slides: [
+    "/course_file/slides/Lecture_1_Chemotaxis.pdf",
+    "/course_file/slides/Lecture_4_Kleibers_Law.pdf",
+    "/course_file/slides/Lecture_4_Why_Fermi_Problems_Balance_Expectations.pdf",
+  ],
   lectures: [
-    { title: "Chemotaxis", file: "/course_file/slides/Lecture_1_Chemotaxis.pdf" },
+    { title: "Chemotaxis" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
-    {
-      title: "Nonlinear regulation and solving equations graphically",
-      file: [
-        "/course_file/slides/Lecture_4_Kleibers_Law.pptx",
-        "/course_file/slides/Lecture_4_Why_Fermi_Problems_Balance_Expectations.pptx",
-      ],
-    },
+    { title: "Nonlinear regulation and solving equations graphically" },
     { title: "Network motifs and dynamical functions" },
     { title: "Positive feedback, bistability, and cellular decision-making" },
     { title: "Negative feedback, delay, and oscillations" },
