@@ -18,7 +18,9 @@ export interface DownloadItem {
 
 export interface Lecture {
   title: string;
-  file?: string; // download link; leave empty until materials are available
+  // Download link(s) — a lecture may have more than one deck attached.
+  // Leave empty until materials are available.
+  file?: string | string[];
 }
 
 export const course = {
@@ -44,18 +46,24 @@ export const course = {
   outlineFiles: [
     {
       label: "Doctoral Course Syllabus — Part A (PDF)",
-      file: "/course_file/Doctoral_Course_Syllabus_Qbio (A).pdf",
+      file: "/course_file/syllabus/Doctoral_Course_Syllabus_Qbio (A).pdf",
     },
     {
       label: "Doctoral Course Syllabus — Part B (PDF)",
-      file: "/course_file/Doctoral_Course_Syllabus_Qbio (B).pdf",
+      file: "/course_file/syllabus/Doctoral_Course_Syllabus_Qbio (B).pdf",
     },
   ],
   lectures: [
-    { title: "Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
+    { title: "Chemotaxis", file: "/course_file/slides/Lecture_1_Chemotaxis.pdf" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
-    { title: "Nonlinear regulation and solving equations graphically" },
+    {
+      title: "Nonlinear regulation and solving equations graphically",
+      file: [
+        "/course_file/slides/Lecture_4_Kleibers_Law.pptx",
+        "/course_file/slides/Lecture_4_Why_Fermi_Problems_Balance_Expectations.pptx",
+      ],
+    },
     { title: "Network motifs and dynamical functions" },
     { title: "Positive feedback, bistability, and cellular decision-making" },
     { title: "Negative feedback, delay, and oscillations" },
@@ -70,7 +78,7 @@ export const course = {
     { title: "Whole-cell modelling, FBA, and coarse-grained descriptions" },
   ] as Lecture[],
   problemSets: [
-    { title: "Problem Set 1", file: "/course_file/Problem_Set_1.pdf" },
+    { title: "Problem Set 1", file: "/course_file/problemset/Problem_Set_1.pdf" },
     { title: "Problem Set 2" },
     { title: "Problem Set 3" },
     { title: "Problem Set 4" },
@@ -80,11 +88,15 @@ export const course = {
   lectureNotes: [
     {
       title: "Intro_to_Quant_Bio_LectureNote_0902",
-      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0902.pdf",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0902.pdf",
     },
     {
       title: "Intro_to_Quant_Bio_LectureNote_0908",
-      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0908.pdf",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0908.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_0911",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0911.pdf",
     },
   ] as Lecture[],
 };

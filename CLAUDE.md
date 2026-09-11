@@ -30,14 +30,14 @@
 
 - **成员增删 / 照片 / 简介 / 邮箱** → `src/data/people.ts`。每条 Person 含 `id, name, nameCn, role, roleLabel, image, email?, bio`。头像放 `public/images/team/<id>-headshot.jpg|.webp`（id 与数据一致）。新增大图先跑 `scripts/optimize-team-images.mjs` 压缩/转 webp。
 - **课程 / Teaching 页** → `src/data/course.ts` 里的 `course` 常量：
-  - `lectures[]`：某一讲填了 `file`，就会显示在 Downloadable material → **Slides**（可下载）。幻灯片 PDF 放 `public/course_file/`。
-  - `problemSets[]`：某一套填了 `file`，就会显示在 → **Problem Sets**。
-  - `lectureNotes[]`：某份笔记填了 `file`，就会显示在 → **Lecture Notes**（Problem Sets 之后）。
-  - `outlineFiles[]`：Syllabus 下载。
+  - `lectures[]`：某一讲填了 `file`，就会显示在 Downloadable material → **Slides**（可下载）。一讲可以有多个文件，写数组即可（如 Lecture 4 的两份 pptx）。幻灯片放 `public/course_file/slides/`（PDF 或 pptx 都行，列表标签取文件名去掉扩展名）。
+  - `problemSets[]`：某一套填了 `file`，就会显示在 → **Problem Sets**。文件放 `public/course_file/problemset/`。
+  - `lectureNotes[]`：某份笔记填了 `file`，就会显示在 → **Lecture Notes**（Problem Sets 之后）。文件放 `public/course_file/lecturenote/`。
+  - `outlineFiles[]`：Syllabus 下载。文件放 `public/course_file/syllabus/`。
 - **论文**：正常情况自动从 ORCID 抓取（ORCID ID 见 `publications.ts` 注释，拉取逻辑在 `src/services/*`、`src/hooks/usePublications.ts`）；手补/高亮文章在 `src/data/publications.ts`。
 - **网站口号 / 地址 / 实验室简介 / 联系邮箱** → `src/data/site.ts` 的 `siteConfig`。
 - **研究内容 / 研究方式** → `src/data/research.ts`、`src/data/researchApproach.ts`。
-- **静态资源**（图片、PDF、logo）放 `public/`，通过 `/xxx` 相对根路径引用；课程文件统一在 `public/course_file/`。
+- **静态资源**（图片、PDF、logo）放 `public/`，通过 `/xxx` 相对根路径引用；课程文件统一在 `public/course_file/`，按类型分子目录：`slides/`、`problemset/`、`lecturenote/`、`syllabus/`。
 
 ## 红线（务必遵守）
 

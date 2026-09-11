@@ -94,15 +94,19 @@ const DownloadRow: React.FC<{ item: DownloadItem }> = ({ item }) => (
   </a>
 );
 
+/** "…/Lecture_4_Kleibers_Law.pptx" -> "Lecture_4_Kleibers_Law" */
+const fileName = (filePath: string) =>
+  filePath.split("/").pop()!.replace(/\.[^.]+$/, "");
+
 const Teaching: React.FC = () => {
-  // Slides submodule shows only lectures that have a file attached.
+  // Slides submodule lists every file attached to a lecture, in schedule order.
   // Label is decoupled from the Course Schedule title and shows the file name directly.
   const slides = course.lectures
-    .filter((lecture) => lecture.file)
-    .map((lecture) => ({
-      label: (lecture.file as string).split("/").pop()!.replace(/\.pdf$/i, ""),
-      file: lecture.file as string,
-    }));
+    .flatMap((lecture) => {
+      const file = lecture.file;
+      return file ? (Array.isArray(file) ? file : [file]) : [];
+    })
+    .map((file) => ({ label: fileName(file), file }));
 
   return (
     <div className="min-h-screen pt-16">
