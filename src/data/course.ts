@@ -44,15 +44,22 @@ export const course = {
   outlineFiles: [
     {
       label: "Doctoral Course Syllabus — Part A (PDF)",
-      file: "/course_file/Doctoral_Course_Syllabus_Qbio (A).pdf",
+      file: "/course_file/syllabus/Doctoral_Course_Syllabus_Qbio (A).pdf",
     },
     {
       label: "Doctoral Course Syllabus — Part B (PDF)",
-      file: "/course_file/Doctoral_Course_Syllabus_Qbio (B).pdf",
+      file: "/course_file/syllabus/Doctoral_Course_Syllabus_Qbio (B).pdf",
     },
   ],
+  // Slide decks, in the order they should appear under Downloadable material.
+  // Independent of the Course Schedule; the page labels each with its file name.
+  slides: [
+    "/course_file/slides/Lecture_1_Chemotaxis.pdf",
+    "/course_file/slides/Lecture_4_Kleibers_Law.pdf",
+    "/course_file/slides/Lecture_4_Why_Fermi_Problems_Balance_Expectations.pdf",
+  ],
   lectures: [
-    { title: "Chemotaxis", file: "/course_file/Lecture_1_Chemotaxis.pdf" },
+    { title: "Chemotaxis" },
     { title: "Numbers and scales, and how to build simple models" },
     { title: "Chemical kinetics, the lac operon, and transcription networks" },
     { title: "Nonlinear regulation and solving equations graphically" },
@@ -70,7 +77,7 @@ export const course = {
     { title: "Whole-cell modelling, FBA, and coarse-grained descriptions" },
   ] as Lecture[],
   problemSets: [
-    { title: "Problem Set 1", file: "/course_file/Problem_Set_1.pdf" },
+    { title: "Problem Set 1", file: "/course_file/problemset/Problem_Set_1.pdf" },
     { title: "Problem Set 2" },
     { title: "Problem Set 3" },
     { title: "Problem Set 4" },
@@ -80,11 +87,15 @@ export const course = {
   lectureNotes: [
     {
       title: "Intro_to_Quant_Bio_LectureNote_0902",
-      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0902.pdf",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0902.pdf",
     },
     {
       title: "Intro_to_Quant_Bio_LectureNote_0908",
-      file: "/course_file/Intro_to_Quant_Bio_LectureNote_0908.pdf",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0908.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_0911",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0911.pdf",
     },
   ] as Lecture[],
 };
