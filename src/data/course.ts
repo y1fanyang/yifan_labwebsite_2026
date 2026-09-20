@@ -58,6 +58,7 @@ export const course = {
     "/course_file/slides/Lecture_4_Kleibers_Law.pdf",
     "/course_file/slides/Lecture_4_Why_Fermi_Problems_Balance_Expectations.pdf",
     "/course_file/slides/Lecture_5_Gene_Regulatory_Networks_and_Response_Time.pdf",
+    "/course_file/slides/Lecture_6_GRN_Bistability_and_Cellular_Memory.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
@@ -101,6 +102,10 @@ export const course = {
     {
       title: "Intro_to_Quant_Bio_LectureNote_0915",
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0915.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_0918",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0918.pdf",
     },
   ] as Lecture[],
 };
