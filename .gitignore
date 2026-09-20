@@ -27,3 +27,8 @@ package-lock.json.msh-backup
 
 # AI collaboration notes (planning docs from AI conversations)
 cooperate_with_ai/
+
+# Draft PDF-export workspace. Everything under public/ is copied into the
+# build, so anything committed here would become a downloadable file on the
+# site — keep drafts, sources and packages out of git.
+public/topdf/
