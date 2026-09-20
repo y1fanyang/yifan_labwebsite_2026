@@ -32,3 +32,7 @@ cooperate_with_ai/
 # build, so anything committed here would become a downloadable file on the
 # site — keep drafts, sources and packages out of git.
 public/topdf/
+
+# Lecture-note export toolchain (pandoc + xelatex). Local-only: kept off the
+# repo so a stray `git add -A` can't pick it up.
+scripts/lecture-note-export/
