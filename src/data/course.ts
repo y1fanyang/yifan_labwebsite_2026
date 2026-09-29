@@ -81,7 +81,7 @@ export const course = {
   ] as Lecture[],
   problemSets: [
     { title: "Problem Set 1", file: "/course_file/problemset/Problem_Set_1.pdf" },
-    { title: "Problem Set 2" },
+    { title: "Problem Set 2", file: "/course_file/problemset/Problem_Set_2.pdf" },
     { title: "Problem Set 3" },
     { title: "Problem Set 4" },
     { title: "Problem Set 5" },
