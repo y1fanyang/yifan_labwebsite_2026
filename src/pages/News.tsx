@@ -16,9 +16,9 @@ const newsItems: NewsItem[] = [
   {
     id: "autumn-2026",
     date: "2026.10.10",
-    title: "Lab Autumn Outing to Hangzhou Wildlife Park",
+    title: "Lab Autumn Outing to Hangzhou Wild Animal Zoo",
     description: "",
-    location: "杭州野生动物园",
+    location: "Hangzhou Wild Animal Zoo",
     type: "activity",
     images: [
       "/images/news/autumn-2026/0329db79ecf87943c96372f8092a8294.jpg",
@@ -30,7 +30,6 @@ const newsItems: NewsItem[] = [
       "/images/news/autumn-2026/610d429f365de1073ff77c2838486406.jpg",
       "/images/news/autumn-2026/8b357f86d8ec2d4a066a9f6ed2a90f6d.jpg",
       "/images/news/autumn-2026/96a8ae04ba23dec0f33eeff5d0a5919e.jpg",
-      "/images/news/autumn-2026/a010a1e639a31b4ea295bbf673922a2b.jpg",
       "/images/news/autumn-2026/ab1a2931948c7b6b9b96f5178a48400a.jpg",
       "/images/news/autumn-2026/b375279bff631ae8d814939fa9764ca1.jpg",
       "/images/news/autumn-2026/d9e43f5267e6731e2a81c614f65691ae.jpg",
