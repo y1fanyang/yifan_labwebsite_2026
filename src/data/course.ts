@@ -60,6 +60,7 @@ export const course = {
     "/course_file/slides/Lecture_5_Gene_Regulatory_Networks_and_Response_Time.pdf",
     "/course_file/slides/Lecture_6_GRN_Bistability_and_Cellular_Memory.pdf",
     "/course_file/slides/Lecture_7_Biological_Oscillations.pdf",
+    "/course_file/slides/Lecture_8_Noise_and_Stochasticity_in_Biology.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
@@ -111,6 +112,10 @@ export const course = {
     {
       title: "Intro_to_Quant_Bio_LectureNote_0922",
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_0922.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_1023",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1023.pdf",
     },
   ] as Lecture[],
 };
