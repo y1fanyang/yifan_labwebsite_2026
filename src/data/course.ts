@@ -61,6 +61,7 @@ export const course = {
     "/course_file/slides/Lecture_6_GRN_Bistability_and_Cellular_Memory.pdf",
     "/course_file/slides/Lecture_7_Biological_Oscillations.pdf",
     "/course_file/slides/Lecture_8_Noise_and_Stochasticity_in_Biology.pdf",
+    "/course_file/slides/Lecture_9_Noise_Propagation.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
@@ -116,6 +117,10 @@ export const course = {
     {
       title: "Intro_to_Quant_Bio_LectureNote_1023",
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1023.pdf",
+    },
+    {
+      title: "10.27 Noise lecture notes",
+      file: "/course_file/lecturenote/10.27 Noise lecture notes.pdf",
     },
   ] as Lecture[],
 };
