@@ -62,6 +62,7 @@ export const course = {
     "/course_file/slides/Lecture_7_Biological_Oscillations.pdf",
     "/course_file/slides/Lecture_8_Noise_and_Stochasticity_in_Biology.pdf",
     "/course_file/slides/Lecture_9_Noise_Propagation.pdf",
+    "/course_file/slides/Lecture_10_Excitability_Thresholds_and_Transient_Cell_States.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
@@ -86,7 +87,7 @@ export const course = {
     { title: "Problem Set 2", file: "/course_file/problemset/Problem_Set_2.pdf" },
     { title: "Problem Set 3" },
     { title: "Problem Set 4" },
-    { title: "Problem Set 5" },
+    { title: "Problem Set 5", file: "/course_file/problemset/Problem_Set_5.pdf" },
     { title: "Problem Set 6" },
   ] as Lecture[],
   lectureNotes: [
@@ -119,8 +120,12 @@ export const course = {
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1023.pdf",
     },
     {
-      title: "10.27 Noise lecture notes",
-      file: "/course_file/lecturenote/10.27 Noise lecture notes.pdf",
+      title: "Intro_to_Quant_Bio_LectureNote_1027",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1027.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_1030",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1030.pdf",
     },
   ] as Lecture[],
 };
