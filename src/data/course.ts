@@ -21,6 +21,11 @@ export interface Lecture {
   file?: string; // download link; leave empty until materials are available
 }
 
+export interface MoreInfoPart {
+  text: string;
+  href?: string; // a part with `href` renders as a link
+}
+
 export const course = {
   code: "QBCS5002",
   title: "Introduction to quantitative biology A&B",
@@ -132,6 +137,18 @@ export const course = {
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1103.pdf",
     },
   ] as Lecture[],
+  // Anything else worth handing out (reading lists, review sheets, …).
+  // A set only shows up on the Teaching page once it has a `file`.
+  moreFiles: [] as Lecture[],
+  // Extra notes under the "More Information" heading; each entry is one line,
+  // and any part with an `href` becomes a link.
+  moreInfo: [
+    [
+      { text: "Co-taught with " },
+      { text: "Ho lab", href: "https://ho.lab.westlake.edu.cn/teaching_en.html" },
+      { text: " ;" },
+    ],
+  ] as MoreInfoPart[][],
 };
 
 export type Course = typeof course;

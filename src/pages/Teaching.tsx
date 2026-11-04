@@ -12,6 +12,8 @@ import {
   ListChecks,
   Presentation,
   NotebookText,
+  FolderOpen,
+  Info,
 } from "lucide-react";
 import { course } from "@/data/course";
 import type { DownloadItem, CoursePerson } from "@/data/course";
@@ -304,6 +306,72 @@ const Teaching: React.FC = () => {
                   </div>
                 </div>
               )}
+
+              {/* More Information */}
+              {course.moreInfo.length > 0 && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-base mb-3">
+                    <Info
+                      size={16}
+                      style={{ color: "var(--color-secondary)" }}
+                    />
+                    More Information
+                  </h3>
+                  <div className="space-y-2">
+                    {course.moreInfo.map((line, i) => (
+                      <p
+                        key={i}
+                        className="text-base leading-relaxed"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {line.map((part, j) =>
+                          part.href ? (
+                            <a
+                              key={j}
+                              href={part.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {part.text}
+                            </a>
+                          ) : (
+                            <React.Fragment key={j}>
+                              {part.text}
+                            </React.Fragment>
+                          )
+                        )}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* More */}
+              <div>
+                <h3 className="flex items-center gap-2 text-base mb-3">
+                  <FolderOpen
+                    size={16}
+                    style={{ color: "var(--color-secondary)" }}
+                  />
+                  More
+                </h3>
+                {course.moreFiles.some((item) => item.file) ? (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {course.moreFiles
+                      .filter((item) => item.file)
+                      .map((item) => (
+                        <DownloadRow
+                          key={item.title}
+                          item={{ label: item.title, file: item.file as string }}
+                        />
+                      ))}
+                  </div>
+                ) : (
+                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                    Additional materials will be posted here.
+                  </p>
+                )}
+              </div>
             </div>
           </FadeInSection>
         </div>
