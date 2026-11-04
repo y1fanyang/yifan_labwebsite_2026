@@ -35,7 +35,6 @@
   - `problemSets[]`：某一套填了 `file`，就会显示在 → **Problem Sets**。文件放 `public/course_file/problemset/`。
   - `lectureNotes[]`：某份笔记填了 `file`，就会显示在 → **Lecture Notes**（Problem Sets 之后）。文件放 `public/course_file/lecturenote/`。
   - `moreInfo[]`：**More Information** 小节的文字说明（紧跟 Lecture Notes）。每个元素是一行，行内是 `{ text, href? }` 片段，带 `href` 的片段渲染成链接。
-  - `moreFiles[]`：其他材料（阅读清单、复习提纲等）。某一条填了 `file`，就会在 **Lecture Notes** 之后多出 → **More**。放哪由内容决定，仍建议在 `public/course_file/` 下按类型建子目录。
   - `outlineFiles[]`：Syllabus 下载。文件放 `public/course_file/syllabus/`。
 - **论文**：正常情况自动从 ORCID 抓取（ORCID ID 见 `publications.ts` 注释，拉取逻辑在 `src/services/*`、`src/hooks/usePublications.ts`）；手补/高亮文章在 `src/data/publications.ts`。
 - **网站口号 / 地址 / 实验室简介 / 联系邮箱** → `src/data/site.ts` 的 `siteConfig`。

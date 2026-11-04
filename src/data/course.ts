@@ -137,9 +137,6 @@ export const course = {
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1103.pdf",
     },
   ] as Lecture[],
-  // Anything else worth handing out (reading lists, review sheets, …).
-  // A set only shows up on the Teaching page once it has a `file`.
-  moreFiles: [] as Lecture[],
   // Extra notes under the "More Information" heading; each entry is one line,
   // and any part with an `href` becomes a link.
   moreInfo: [
