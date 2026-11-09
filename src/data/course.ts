@@ -68,6 +68,7 @@ export const course = {
     "/course_file/slides/Lecture_8_Noise_and_Stochasticity_in_Biology.pdf",
     "/course_file/slides/Lecture_9_Noise_Propagation.pdf",
     "/course_file/slides/Lecture_10_Excitability_Thresholds_and_Transient_Cell_States.pdf",
+    "/course_file/slides/Lecture_11_Inflammation_and_Fibrosis.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
