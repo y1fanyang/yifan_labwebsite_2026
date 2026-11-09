@@ -92,8 +92,8 @@ export const course = {
     { title: "Problem Set 1", file: "/course_file/problemset/Problem_Set_1.pdf" },
     { title: "Problem Set 2", file: "/course_file/problemset/Problem_Set_2.pdf" },
     { title: "Problem Set 3" },
-    { title: "Problem Set 4" },
-    { title: "Problem Set 5", file: "/course_file/problemset/Problem_Set_5.pdf" },
+    { title: "Problem Set 4", file: "/course_file/problemset/Problem_Set_4.pdf" },
+    { title: "Problem Set 5" },
     { title: "Problem Set 6" },
   ] as Lecture[],
   lectureNotes: [
