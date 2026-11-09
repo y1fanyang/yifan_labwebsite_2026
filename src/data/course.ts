@@ -137,6 +137,10 @@ export const course = {
       title: "Intro_to_Quant_Bio_LectureNote_1103",
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1103.pdf",
     },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_1106",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1106.pdf",
+    },
   ] as Lecture[],
   // Extra notes under the "More Information" heading; each entry is one line,
   // and any part with an `href` becomes a link.
