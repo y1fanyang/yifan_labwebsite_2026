@@ -68,6 +68,7 @@ export const course = {
     "/course_file/slides/Lecture_8_Noise_and_Stochasticity_in_Biology.pdf",
     "/course_file/slides/Lecture_9_Noise_Propagation.pdf",
     "/course_file/slides/Lecture_10_Excitability_Thresholds_and_Transient_Cell_States.pdf",
+    "/course_file/slides/Lecture_11_Inflammation_and_Fibrosis.pdf",
   ],
   lectures: [
     { title: "Chemotaxis" },
@@ -91,8 +92,8 @@ export const course = {
     { title: "Problem Set 1", file: "/course_file/problemset/Problem_Set_1.pdf" },
     { title: "Problem Set 2", file: "/course_file/problemset/Problem_Set_2.pdf" },
     { title: "Problem Set 3" },
-    { title: "Problem Set 4" },
-    { title: "Problem Set 5", file: "/course_file/problemset/Problem_Set_5.pdf" },
+    { title: "Problem Set 4", file: "/course_file/problemset/Problem_Set_4.pdf" },
+    { title: "Problem Set 5" },
     { title: "Problem Set 6" },
   ] as Lecture[],
   lectureNotes: [
@@ -135,6 +136,10 @@ export const course = {
     {
       title: "Intro_to_Quant_Bio_LectureNote_1103",
       file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1103.pdf",
+    },
+    {
+      title: "Intro_to_Quant_Bio_LectureNote_1106",
+      file: "/course_file/lecturenote/Intro_to_Quant_Bio_LectureNote_1106.pdf",
     },
   ] as Lecture[],
   // Extra notes under the "More Information" heading; each entry is one line,
